@@ -4,7 +4,9 @@ export default {
       const taskHTML = `
         <h6>${taskEntry.task}</h6>
         <div>${taskEntry.expectedCompletionDate}</div>
-        <input type="checkbox" name="Complete">
+        <input type="checkbox" name="complete" value="complete">
+        <label for="complete">Completed</label>
+
       `;
 
       return taskHTML
