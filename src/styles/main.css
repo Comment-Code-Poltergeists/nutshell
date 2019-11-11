@@ -1,0 +1,33 @@
+.side-components {
+
+  background-color: lightcoral;
+  height: 33%;
+  margin: 1%;
+  text-align: center;
+  
+}
+
+.main{
+  background-color: dimgray;
+  text-align: center;
+}
+
+.row {
+  height: 700px;
+}
+
+.footer {
+  margin: 0 auto;
+  justify-content: center;
+  vertical-align: middle;
+  padding-top: 10px;
+}
+
+/* action button bottom of page */
+.action {
+  width: 200px;
+}
+
+.container {
+  max-width: 1000px !important;
+}
