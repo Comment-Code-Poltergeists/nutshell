@@ -3,11 +3,13 @@
   background-color: lightcoral;
   height: 33%;
   margin: 1%;
+  text-align: center;
   
 }
 
 .main{
   background-color: dimgray;
+  text-align: center;
 }
 
 .row {
