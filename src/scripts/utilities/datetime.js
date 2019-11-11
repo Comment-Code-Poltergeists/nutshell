@@ -1,6 +1,6 @@
 /*
-    Purpose:
-    Author:
+    Purpose: Utility functions available for cross-component usage
+    Author(s): Ryan Bishop, Ken Boyd, Chase Fite, Guy Cherkesky
 */
 
 export function createDateTimeToISO() {
