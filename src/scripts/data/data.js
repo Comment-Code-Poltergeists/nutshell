@@ -1,3 +1,6 @@
+//authors:  Sullivan, Ken, Chase
+//purpose:  generic fetch functions for everyone to use
+
 const baseUrl = "http://localhost:8088"
 
 export default {
@@ -8,6 +11,7 @@ export default {
 
     fetchEverything: function (userId) {
         return this.fetchFriendsList(userId)
+        //first fetch, getting all of your friends
             .then(friendObjs => {
                 console.log(friendObjs)
                 let IdArray = []
@@ -18,18 +22,23 @@ export default {
                 console.log(IdArray)
                 let fetchArticlesUrl = `${baseUrl}/articles?userId=${userId}`
                 let fetchEventsUrl = `${baseUrl}/events?userId=${userId}`
+                //building the urls to use for getting all the articles and events
                 IdArray.forEach(id => {
                     fetchArticlesUrl += `&userId=${id}`
                     fetchEventsUrl += `&userId=${id}`
                 })
                 console.log(fetchEventsUrl)
+                //fetch your friends articles and yours
                 fetch(fetchArticlesUrl).then(data => data.json())
                     .then(articlesArray => {
+                        //fetch your friends events and yours
                         fetch(fetchEventsUrl)
                             .then(data => data.json())
                             .then(eventsArray => {
+                                //fetch all messages
                                 fetch(`${baseUrl}/messages`).then(data => data.json())
                                     .then(messagesArray => {
+                                        //fetch your to-do tasks
                                         fetch(`${baseUrl}/tasks/${userId}`).then(data => data.json())
                                         //save everything to session storage
                                             .then(tasksArray => {
