@@ -5,12 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./styles/main.css">
-  <title>Document</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css">
+  <title>Nutshell</title>
 </head>
 
 <body>
-  <article id="container"></article>
+
+  <div class="container">
+    <ul class="nav mr-sm-2">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Logo</a>
+      </li>
+      <form class="form-inline mx-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <li class="nav-item ">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+    <div class="row" id="components-container">
+      <div class="col-lg-3">
+        <div id="events-container" class="card side-components">Events</div>
+        <div id="articles-container" class="card side-components">News</div>
+        <div id="tasks-container" class="card side-components">Todo</div>
+      </div>
+
+      <div id="main-container" class="col-lg-6 main">Main</div>
+
+
+      <div class="col-lg-3">
+        <div id="friends-container" class="card side-components">Friends</div>
+        <div id="messages-container" class="card side-components">Messages</div>
+        <div id="ads-container" class="card side-components">Your Ad Here</div>
+      </div>
+    </div>
+    <div class="nav footer text-muted align-items-center">
+      <a href="#" class="nav-item btn btn-primary action">Action</a>
+    </div>
+  </div>
+
 </body>
 
 </html>
