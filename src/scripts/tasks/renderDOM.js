@@ -6,9 +6,10 @@ export const renderTaskCard = (tasks) => {
   tasksContent.innerHTML = ""
 
   let taskHTML = ""
-  for(let i = 0; i < 2; i++) {
-    taskHTML += buildDOM.buildTask(tasks[i]);
-  }
+  
+  tasks.forEach(task => {
+    taskHTML += buildDOM.buildTask(task);
+  })
 
   tasksContent.innerHTML = taskHTML
 };
