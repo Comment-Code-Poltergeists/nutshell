@@ -4,6 +4,7 @@
     or the dashboard should be rendered.
 */
 import API from "./data/data.js"
+import eventManager from "./events/events"
 
 // API.fetchFriendsList(1).then((friendData) => console.log(friendData))
 //tried to make a big function to get everything at the start, doesnt quite work :(
@@ -13,7 +14,5 @@ API.fetchEverything(2).then(yourInfo => {
 })
 // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
 
-
-import { renderTaskCard, renderTaskMain } from "./tasks/renderDOM.js"
-renderTaskCard(JSON.parse(sessionStorage.getItem("tasks")))
-renderTaskMain(JSON.parse(sessionStorage.getItem("tasks")))
+eventManager.getUserEvents()
+eventManager.eventsClickHandler()
