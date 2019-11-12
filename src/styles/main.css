@@ -31,3 +31,16 @@
 .container {
   max-width: 1000px !important;
 }
+
+.friend-card {
+  border: solid black 1px;
+  padding: 2px;
+  background-color: grey;
+  margin-bottom: 1px;
+}
+
+.friend-inline-el {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
