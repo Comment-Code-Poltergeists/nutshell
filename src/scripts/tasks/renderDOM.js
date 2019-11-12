@@ -1,28 +1,17 @@
 import buildDOM from "./buildDOM.js";
 
-
-export const renderTaskCard = (tasks) => {
-  const tasksContent = document.querySelector("#tasks-content")
-  tasksContent.innerHTML = ""
-
-  let taskHTML = ""
-  
+export const renderTaskCard = tasks => {
+  const tasksContent = document.querySelector("#tasks-content");
+  tasksContent.innerHTML = "";
   tasks.forEach(task => {
-    taskHTML += buildDOM.buildTask(task);
-  })
-
-  tasksContent.innerHTML = taskHTML
+    tasksContent.appendChild(buildDOM.buildTaskCard(task));
+  });
 };
 
-export const renderTaskMain = (tasks) => {
-  const mainContent = document.querySelector("#main-content")
-  mainContent.innerHTML = "";
-
-  let mainHTML = ""
-
+export const renderTaskMain = tasks => {
+  const mainContent = document.querySelector("#main-content");
+  mainContent.innerHTML = ""
   tasks.forEach(task => {
-    mainHTML += buildDOM.buildTask(task);
-  })
-
-  mainContent.innerHTML = mainHTML
+    mainContent.appendChild(buildDOM.buildTaskMain(task));
+  });
 };

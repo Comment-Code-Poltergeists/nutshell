@@ -12,3 +12,8 @@ API.fetchEverything(2).then(yourInfo => {
     console.log("messages", JSON.parse(data))
 })
 // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
+
+
+import { renderTaskCard, renderTaskMain } from "./tasks/renderDOM.js"
+renderTaskCard(JSON.parse(sessionStorage.getItem("tasks")))
+renderTaskMain(JSON.parse(sessionStorage.getItem("tasks")))
