@@ -30,7 +30,7 @@ export default {
                             .then(eventsArray => {
                                 fetch(`${baseUrl}/messages?_expand=user`).then(data => data.json())
                                     .then(messagesArray => {
-                                        fetch(`${baseUrl}/tasks/${userId}`).then(data => data.json())
+                                        fetch(`${baseUrl}/tasks/?userId=${userId}`).then(data => data.json())
                                         //save everything to session storage
                                             .then(tasksArray => {
                                                 sessionStorage.setItem("friends", JSON.stringify(friendObjs));

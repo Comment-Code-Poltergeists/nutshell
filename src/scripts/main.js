@@ -5,6 +5,7 @@
 */
 import API from "./data/data.js"
 import { displayMessages } from "./messages/messages.js"
+import eventManager from "./events/events"
 
 // API.fetchFriendsList(1).then((friendData) => console.log(friendData))
 //tried to make a big function to get everything at the start, doesnt quite work :(
@@ -17,3 +18,5 @@ API.fetchEverything(2).then(yourInfo => {
 
 
 displayMessages()
+eventManager.getUserEvents()
+eventManager.eventsClickHandler()
