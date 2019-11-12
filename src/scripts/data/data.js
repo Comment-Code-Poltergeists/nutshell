@@ -38,8 +38,12 @@ export default {
                                 //fetch all messages
                                 fetch(`${baseUrl}/messages`).then(data => data.json())
                                     .then(messagesArray => {
+<<<<<<< HEAD
                                         //fetch your to-do tasks
                                         fetch(`${baseUrl}/tasks/${userId}`).then(data => data.json())
+=======
+                                        fetch(`${baseUrl}/tasks/?userId=${userId}`).then(data => data.json())
+>>>>>>> master
                                         //save everything to session storage
                                             .then(tasksArray => {
                                                 sessionStorage.setItem("friends", JSON.stringify(friendObjs));
