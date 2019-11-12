@@ -5,6 +5,7 @@
 */
 import API from "./data/data.js"
 import { populateArticleModule } from "./articles/articles.js"
+import { articlesEventListener } from "./articles/eventListeners.js"
 sessionStorage.setItem("userId", "2")
 const userId = JSON.parse(sessionStorage.getItem("userId"))
 
@@ -13,6 +14,7 @@ const userId = JSON.parse(sessionStorage.getItem("userId"))
 API.fetchEverything(userId).then(yourInfo => {
     let data = sessionStorage.getItem("articles")
     populateArticleModule(JSON.parse(data))
+    articlesEventListener();
 })
 // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
 
