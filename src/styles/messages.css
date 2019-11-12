@@ -1,0 +1,15 @@
+/* 
+Purpose: styling for 'messages' DOM elements
+Author: Ryan Bishop
+*/
+
+.message {
+    background-color: turquoise;
+    border-radius: 7px;
+    padding: 3px;
+}
+
+#new-message {
+    border: none;
+    border-radius: 5px;
+}

@@ -28,7 +28,7 @@ export default {
                         fetch(fetchEventsUrl)
                             .then(data => data.json())
                             .then(eventsArray => {
-                                fetch(`${baseUrl}/messages`).then(data => data.json())
+                                fetch(`${baseUrl}/messages?_expand=user`).then(data => data.json())
                                     .then(messagesArray => {
                                         fetch(`${baseUrl}/tasks/${userId}`).then(data => data.json())
                                         //save everything to session storage
