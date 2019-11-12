@@ -38,12 +38,7 @@ export default {
                                 //fetch all messages
                                 fetch(`${baseUrl}/messages`).then(data => data.json())
                                     .then(messagesArray => {
-<<<<<<< HEAD
-                                        //fetch your to-do tasks
-                                        fetch(`${baseUrl}/tasks/${userId}`).then(data => data.json())
-=======
                                         fetch(`${baseUrl}/tasks/?userId=${userId}`).then(data => data.json())
->>>>>>> master
                                         //save everything to session storage
                                             .then(tasksArray => {
                                                 sessionStorage.setItem("friends", JSON.stringify(friendObjs));
@@ -65,7 +60,7 @@ export default {
     },
 
     patchSomething: function(endUrl, newObj) {
-        fetch(`${baseUrl}/${endUrl}`, {
+        return fetch(`${baseUrl}/${endUrl}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -75,13 +70,13 @@ export default {
     },
 
     deleteSomething: function(endUrl) {
-        fetch(`${baseUrl}/${endUrl}`, {
+        return fetch(`${baseUrl}/${endUrl}`, {
             method: "Delete"
         })
     },
 
     createSomething: function(endUrl, newObj) {
-        fetch(`${baseUrl}/${endUrl}`, {
+        return fetch(`${baseUrl}/${endUrl}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
