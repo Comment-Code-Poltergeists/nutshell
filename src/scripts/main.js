@@ -28,3 +28,7 @@ eventsClickHandler() // looking for a click on the Events container
 renderTaskCard()
 clickTaskCardListener()
 
+  eventsClickHandler(); // looking for a click on the Events container
+  renderTaskCard();
+  clickTaskCardListener();
+});
