@@ -16,6 +16,7 @@ document.getElementById("articles-container").addEventListener("click", () => {
 export const addMainEventListener = () => {
     const MainRef = document.getElementById("main-container");
     MainRef.addEventListener("click", (event) => {
+        //logic for what happens when you click the edit button
         if(event.target.id.includes("edit-article")){
             const id = event.target.id.split("-")[2]
             const cardRef = document.getElementById(`articleCard-${id}`)
@@ -25,12 +26,13 @@ export const addMainEventListener = () => {
                 document.getElementById(`articleUrl-${id}`).value = articleObj.url
                 document.getElementById(`articleSynopsis-${id}`).value = articleObj.synopsis
             })
-
+            //logic for what happens when you click the delete button
         } else if(event.target.id.includes("delete-article")){
             const id = event.target.id.split("-")[2]
             API.deleteSomething(`articles/${id}`).then(() => {
                 updateDomArticles();
             })
+            //logic for saving an article after clicking the save button
         } else if (event.target.id.includes("save-article")) {
             const id = event.target.id.split("-")[2];
             const title = document.getElementById(`articleTitle-${id}`).value
