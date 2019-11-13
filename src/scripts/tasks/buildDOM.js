@@ -1,38 +1,39 @@
 export default {
   buildTaskCard: function(taskEntry) {
-    if (taskEntry.isComplete === false) {
-      const taskSection = document.createElement("section")
-      taskSection.id = `card-task--${taskEntry.id}`
-      taskSection.classList = `card`
+    const taskSection = document.createElement("section")
+    taskSection.id = `card-task--${taskEntry.id}`
+    taskSection.classList = "card bg-secondary border-dark"
 
-      taskSection.innerHTML = `
-        <h6>${taskEntry.task}</h6>
-        <div>${taskEntry.expectedCompletionDate}</div>
-      `;
+    taskSection.innerHTML = `
+      <div class="card-body">
+        <h6 class="card-title">${taskEntry.task}</h6>
+        <div class="card-text">${taskEntry.expectedCompletionDate}</div>
+      </div>
+    `;
 
-      return taskSection
-    }
+    return taskSection
   },
   buildTaskMain: function(taskEntry) {
-    if (taskEntry.isComplete === false) {
-      const mainSection = document.createElement("section")
-      mainSection.id = `card-task--${taskEntry.id}`
-      mainSection.classList = `card`
-      
-      mainSection.innerHTML = `
+    const mainSection = document.createElement("section")
+    mainSection.id = `card-task--${taskEntry.id}`
+    mainSection.classList = "card bg-secondary border-dark"
+    
+    mainSection.innerHTML = `
+      <div class="card-body">
         <span class="task-buttons">
           <button type="button" id="edit-task--${taskEntry.id}" class="btn btn-sm btn-warning">✎</button>
           <button type="button" id="delete-task--${taskEntry.id}" class="btn btn-sm btn-danger">X</button>
         </span>
-        <h6>${taskEntry.task}</h6>
-        <div>${taskEntry.expectedCompletionDate}</div>
+        <h6 class="card-title">${taskEntry.task}</h6>
+        <div class="card-text">${taskEntry.expectedCompletionDate}</div>
         <div class="">
-          <input type="checkbox" name="complete" value="complete" class="form-check-input">
+          <input id="complete-task--${taskEntry.id}" type="checkbox" name="complete" value="complete" class="form-check-input">
           <label for="complete" class="form-check-label">Mark as Complete</label>
         </div>
-      `;
+      </div>
+    `;
 
-      return mainSection
-    }
+    return mainSection
+
   }
 };
