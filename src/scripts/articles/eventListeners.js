@@ -33,7 +33,6 @@ export const addMainEventListener = () => {
             })
         } else if (event.target.id.includes("save-article")) {
             const id = event.target.id.split("-")[2];
-            console.log(id)
             const title = document.getElementById(`articleTitle-${id}`).value
             const url = document.getElementById(`articleUrl-${id}`).value
             const synopsis = document.getElementById(`articleSynopsis-${id}`).value
