@@ -19,11 +19,11 @@ const userId = JSON.parse(sessionStorage.getItem("userId"))
 API.fetchEverything(userId).then(yourInfo => {
     displayMessages()
     displayFriends()
+    // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
+    
+    renderTaskCard()
+    clickTaskCardListener()
+    
+    eventManager.getUserEvents()
+    eventManager.eventsClickHandler()
 })
-// API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
-
-renderTaskCard()
-clickTaskCardListener()
-
-eventManager.getUserEvents()
-eventManager.eventsClickHandler()
