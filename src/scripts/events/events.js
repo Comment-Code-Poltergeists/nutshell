@@ -1,43 +1,28 @@
-import API from "../data/data.js"
+import eventsHTML from "./eventsHTML.js"
+import {sortElementsByDate} from "../utilities/datetime.js"
 
-const eventsMainContainerRef = document.getElementById("events-container")
 const eventContainer = document.getElementById("events-content")
 const mainContainerRef = document.getElementById("main-container")
-
 let eventsArray = []
 
 const eventManager = {
-  eventsClickHandler(){
-    eventsMainContainerRef.addEventListener("click", this.displayUserEvents)
-  },
-  getUserEvents() {
-
+  displayEvents() {
     console.log("GET events")
     eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
-
     console.log(eventsArray)
-    eventContainer.innerHTML = `
-      <div class="card bg-secondary border-dark">
-      <div class="card-body">
-     <h6 class="card-title"> ${eventsArray[0].eventName} </h6>
-     <div class="card-text">
-       ${eventsArray[0].eventDate}
-       ${eventsArray[0].location}</div>
-     </div>
-     </div>
 
-     <br>
+    let sortedEventsArray = sortElementsByDate(eventsArray, "eventDate")
+   console.log(sortedEventsArray)
 
-     <div class="card bg-secondary border-dark">
-      <div class="card-body">
-     <h6 class="card-title"> ${eventsArray[0].eventName} </h6>
-     <div class="card-text">
-       ${eventsArray[0].eventDate}
-       ${eventsArray[0].location}</div>
-     </div>
-     </div>
-  `
-  },
+      let HtmlForAllEvents= ""
+      sortedEventsArray.forEach(event => {
+        console.log(event)
+        const eventHtml = eventsHTML.eventsSideContainerHtmlMaker(event)
+        HtmlForAllEvents += eventHtml
+      })
+      eventContainer.innerHTML = HtmlForAllEvents
+    },
+  
   saveUserEvents() {
     console.log("SAVE events")
   },
