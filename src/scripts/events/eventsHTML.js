@@ -1,6 +1,5 @@
 let SideEventCounter = 0
 let mainEventCounter = 0
-const eventId = 0
 
 export default {
 
@@ -43,8 +42,8 @@ export default {
       <b> ${event.eventDate}</b>
       <b> ${event.location} </b>
      </div>
-     <button type="button" id="delete-task--${eventId}" class="btn btn-sm btn-danger">X</button>
-     <button type="button" id="edit-task--${eventId}" class="btn btn-sm btn-warning">✎</button>
+     <button type="button" id="delete-event--${event.id}" class="btn btn-sm btn-danger">X</button>
+     <button type="button" id="edit-event--${event.id}" class="btn btn-sm btn-warning">✎</button>
      </div>
      </div>`
     } else { // not bolded entries for all the other events
@@ -57,8 +56,8 @@ export default {
        ${event.eventDate}
        ${event.location}
      </div>
-     <button type="button" id="delete-task--${eventId}" class="btn btn-sm btn-danger">X</button>
-     <button type="button" id="edit-task--${eventId}" class="btn btn-sm btn-warning">✎</button>
+     <button type="button" id="delete-event--${event.id}" class="btn btn-sm btn-danger">X</button>
+     <button type="button" id="edit-event--${event.id}" class="btn btn-sm btn-warning">✎</button>
      </div>
      </div>`
     }
