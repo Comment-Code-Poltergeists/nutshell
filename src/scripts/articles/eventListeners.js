@@ -4,6 +4,9 @@ import { populateArticlesToMain } from "./ArticlesToMain";
 import API from "../data/data.js"
 import { populateArticleModule } from "./articles";
 import { userId } from "../main";
+import { articleForm } from "./htmlMaker";
+import {updateDomArticles} from "./articles.js"
+import { createDateTimeToISO } from "../utilities/datetime";
 export const articlesEventListener = () => {
 document.getElementById("articles-container").addEventListener("click", () => {
     populateArticlesToMain();
@@ -14,28 +17,29 @@ export const addMainEventListener = () => {
     const MainRef = document.getElementById("main-container");
     MainRef.addEventListener("click", (event) => {
         if(event.target.id.includes("edit-article")){
-            console.log("edit that article!!")
-            
-
+            const id = event.target.id.split("-")[2]
+            const cardRef = document.getElementById(`articleCard-${id}`)
+            cardRef.innerHTML = articleForm(id);
+            API.buildYourOwnGet(`articles/${id}`).then((articleObj) => {
+                document.getElementById(`articleTitle-${id}`).value = articleObj.title
+                document.getElementById(`articleUrl-${id}`).value = articleObj.url
+                document.getElementById(`articleSynopsis-${id}`).value = articleObj.synopsis
+            })
 
         } else if(event.target.id.includes("delete-article")){
             const id = event.target.id.split("-")[2]
             API.deleteSomething(`articles/${id}`).then(() => {
                 updateDomArticles();
             })
+        } else if (event.target.id.includes("save-article")) {
+            const id = event.target.id.split("-")[2];
+            const title = document.getElementById(`articleTitle-${id}`).value
+            const url = document.getElementById(`articleUrl-${id}`).value
+            const synopsis = document.getElementById(`articleSynopsis-${id}`).value
+            const timestamp = createDateTimeToISO()
+            API.patchSomething(`articles/${id}`, {title, url, synopsis, timestamp}).then(updateDomArticles)
+            
         }
     })
 }
 
-const updateDomArticles = () => {
-    const friendsList = JSON.parse(sessionStorage.getItem("friends"))
-    let Url = `articles?userId=${userId}`;
-    friendsList.forEach(element => {
-        Url += `&userId=${element.user.id}`
-    });
-    API.buildYourOwnGet(Url).then((articlesArray) => {
-        sessionStorage.setItem("articles",JSON.stringify(articlesArray));
-        populateArticleModule();
-        populateArticlesToMain();
-    })
-}
