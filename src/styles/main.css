@@ -51,3 +51,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.remove-button {
+  position: relative;
+  top: -4.5px;
+  left: 2px;
+  float: right;
+}
