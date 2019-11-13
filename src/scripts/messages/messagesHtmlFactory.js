@@ -20,8 +20,8 @@ export default {
         let buttonGroup
 
         if (message.user.id === userId){
-            editButton = `<button id="edit-message--${message.id}" class="btn btn-light btn-sm btn-message">Edit</button>`
-            deleteButton = `<button id="delete-message--${message.id}" class="btn btn-danger btn-sm btn-message">Delete</button>`
+            editButton = `<button id="edit-message--${message.id}" class="btn btn-light btn-sm btn-message">✎</button>`
+            deleteButton = `<button id="delete-message--${message.id}" class="btn btn-danger btn-sm btn-message">X</button>`
             buttonGroup = `<div class="btn-group" role="group">${editButton}${deleteButton}</div>`
         }
         return `

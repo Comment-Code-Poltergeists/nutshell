@@ -6,6 +6,7 @@ Author: Ryan Bishop
 import messagesHtmlFactory from "./messagesHtmlFactory";
 import { attachMessagesEvents } from "./messagesEventListeners.js";
 import data from "../data/data";
+import { sortElementsByDate } from "../utilities/datetime";
 
 const messagesContent = document.getElementById("messages-content")
 
@@ -14,20 +15,22 @@ const renderMessageList = messageArray => {
     messageArray.forEach(message => {
         messagesContent.innerHTML += messagesHtmlFactory.createPreviousMessageHtml(message)
     })
-    // messagesContent.scrollTop = messagesContent.scrollHeight
 }
 
 export function displayMessages(){
     const prevMessages = JSON.parse(sessionStorage.getItem("messages"))
     if (prevMessages.length !== null){
-        renderMessageList(prevMessages)
+        const sortedMessages = sortElementsByDate(prevMessages, "timestamp")
+        renderMessageList(sortedMessages)
     } else {
         data.buildYourOwnGet("messages?_expand=user")
         .then(messages => {
             sessionStorage.setItem("messages", JSON.stringify(messages));
-            renderMessageList(messages)
+            const sortedMessages = sortElementsByDate(prevMessages, "timestamp")
+            renderMessageList(sortedMessages)
         })
     }
     const messagesContent = document.getElementById("messages-content")
     messagesContent.scrollTop = messagesContent.scrollHeight
+    attachMessagesEvents()
 }

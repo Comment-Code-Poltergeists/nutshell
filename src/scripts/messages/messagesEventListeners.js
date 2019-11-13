@@ -18,7 +18,12 @@ const newMessageHandler = () => {
         .then(displayMessages)
 }
 
+const prevMessageButtonHandler = () => {
+    console.log("clicked messages", event.target.id)
+}
+
 export function attachMessagesEvents(){
     //add event listener to 'New Message' button
-    document.getElementById("send-message").addEventListener("click", newMessageHandler)
+    // document.getElementById("send-message").addEventListener("click", newMessageHandler)
+    document.getElementById("messages-content").addEventListener("click", prevMessageButtonHandler)
 }
