@@ -5,7 +5,6 @@
 */
 import API from "./data/data.js"
 import { displayMessages } from "./messages/messages.js"
-import { eventsClickHandler } from "./events/eventListeners.js"
 import eventManager from "./events/events"
 import { renderTaskCard } from "./tasks/renderDOM.js"
 import { clickTaskCardListener } from "./tasks/eventListeners.js"
@@ -20,10 +19,9 @@ API.fetchEverything(userId).then(yourInfo => {
     displayMessages()
     displayFriends()
     eventManager.displaySideEvents()
+    eventManager.setAllEventListeners()
 })
 
-
-eventsClickHandler() // looking for a click on the Events container
 renderTaskCard()
 clickTaskCardListener()
 
