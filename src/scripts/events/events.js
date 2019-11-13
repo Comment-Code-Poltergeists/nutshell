@@ -5,7 +5,7 @@ const mainContainerRef = document.getElementById("main-container")
 let eventsArray = []
 
 const eventManager = {
-  getUserEvents() {
+  displayEvents() {
 
     console.log("GET events")
     eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
