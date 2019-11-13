@@ -13,13 +13,10 @@ export default {
         return this.fetchFriendsList(userId)
         //first fetch, getting all of your friends
             .then(friendObjs => {
-                console.log(friendObjs)
                 let IdArray = []
                 friendObjs.forEach(element => {
                     IdArray.push(element.id)
-
                 });
-                console.log(IdArray)
                 let fetchArticlesUrl = `${baseUrl}/articles?userId=${userId}`
                 let fetchEventsUrl = `${baseUrl}/events?userId=${userId}`
                 //building the urls to use for getting all the articles and events
@@ -27,7 +24,6 @@ export default {
                     fetchArticlesUrl += `&userId=${id}`
                     fetchEventsUrl += `&userId=${id}`
                 })
-                console.log(fetchEventsUrl)
                 //fetch your friends articles and yours
                 fetch(fetchArticlesUrl).then(data => data.json())
                     .then(articlesArray => {

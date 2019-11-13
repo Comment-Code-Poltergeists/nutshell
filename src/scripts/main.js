@@ -20,10 +20,5 @@ API.fetchEverything(userId).then(yourInfo => {
 })
 // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
 
-<<<<<<< HEAD
-
-
-=======
 eventManager.getUserEvents()
 eventManager.eventsClickHandler()
->>>>>>> master
