@@ -10,6 +10,7 @@ export default {
             <input id="new-message" class="rounded" type="text" name="message">
             <button id="send-message" class="btn btn-primary btn-sm">New Message</button>
             </div>
+            <br>
         `
     },
     createPreviousMessageHtml(message){
