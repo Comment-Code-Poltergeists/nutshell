@@ -3,8 +3,8 @@ import { makeArticleCardMain } from "./htmlMaker";
 import { addMainEventListener } from "./eventListeners";
 
 export const populateArticlesToMain = () => {
-const mainRef = document.getElementById("main-content")
-mainRef.innerHTML = ""
+const mainRef = document.getElementById("main-container")
+mainRef.innerHTML = "<h2>Articles</h2>"
 const articleArray = JSON.parse(sessionStorage.getItem("articles"))
 articleArray.forEach(element => {
     const newArt = makeArticleCardMain(element);
