@@ -33,3 +33,17 @@
 .container {
   max-width: 1000px !important;
 }
+
+.friend-card {
+  border: solid black 1px;
+  padding: 2px;
+  background-color: #6c757d;
+  margin-bottom: 2px;
+  border-radius: .25rem;
+}
+
+.friend-inline-el {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
