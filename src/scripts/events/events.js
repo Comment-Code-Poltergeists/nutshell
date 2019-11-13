@@ -1,15 +1,10 @@
-import API from "../data/data.js"
 
-const eventsMainContainerRef = document.getElementById("events-container")
 const eventContainer = document.getElementById("events-content")
 const mainContainerRef = document.getElementById("main-container")
 
 let eventsArray = []
 
 const eventManager = {
-  eventsClickHandler(){
-    eventsMainContainerRef.addEventListener("click", this.displayUserEvents)
-  },
   getUserEvents() {
 
     console.log("GET events")
