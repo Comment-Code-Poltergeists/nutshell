@@ -5,6 +5,7 @@ const eventContainer = document.getElementById("events-content")
 const mainContainerRef = document.getElementById("main-container")
 let eventsArray = []
 
+
 const eventManager = {
   displayEvents() {
     console.log("GET events")
@@ -21,6 +22,7 @@ const eventManager = {
         HtmlForAllEvents += eventHtml
       })
       eventContainer.innerHTML = HtmlForAllEvents
+
     },
   
   saveUserEvents() {
