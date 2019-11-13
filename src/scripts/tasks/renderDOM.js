@@ -11,7 +11,8 @@ export const renderTaskCard = () => {
   });
 };
 
-export const renderTaskMain = tasks => {
+export const renderTaskMain = () => {
+  const tasks = JSON.parse(sessionStorage.getItem("tasks"))
   const mainContent = document.querySelector("#main-container");
   mainContent.innerHTML = "<h1>All Tasks</h1>";
 
