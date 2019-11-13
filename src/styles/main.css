@@ -1,5 +1,9 @@
 @import 'messages.css';
 
+#components-container {
+  height: 80%;
+}
+
 .side-components {
 
   background-color: lightcoral;
