@@ -11,14 +11,12 @@ sessionStorage.setItem("userId", "2")
 const userId = JSON.parse(sessionStorage.getItem("userId"))
 
 
-// API.fetchFriendsList(1).then((friendData) => console.log(friendData))
 //tried to make a big function to get everything at the start, doesnt quite work :(
-API.fetchEverything(2).then(yourInfo => {
+API.fetchEverything(2).then(() => {
     displayMessages()
+    eventManager.getUserEvents() // populating the Events container with events from the cache
 })
-// API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
 
 
+eventsClickHandler() // looking for a click on the Events container
 
-eventManager.getUserEvents()
-eventsClickHandler()

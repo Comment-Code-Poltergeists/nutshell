@@ -1,7 +1,7 @@
+import eventsHTML from "./eventsHTML.js"
 
 const eventContainer = document.getElementById("events-content")
 const mainContainerRef = document.getElementById("main-container")
-
 let eventsArray = []
 
 const eventManager = {
@@ -9,30 +9,17 @@ const eventManager = {
 
     console.log("GET events")
     eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
-
     console.log(eventsArray)
-    eventContainer.innerHTML = `
-      <div class="card bg-secondary border-dark">
-      <div class="card-body">
-     <h6 class="card-title"> ${eventsArray[0].eventName} </h6>
-     <div class="card-text">
-       ${eventsArray[0].eventDate}
-       ${eventsArray[0].location}</div>
-     </div>
-     </div>
 
-     <br>
-
-     <div class="card bg-secondary border-dark">
-      <div class="card-body">
-     <h6 class="card-title"> ${eventsArray[0].eventName} </h6>
-     <div class="card-text">
-       ${eventsArray[0].eventDate}
-       ${eventsArray[0].location}</div>
-     </div>
-     </div>
-  `
-  },
+      let HtmlForAllEvents= ""
+      eventsArray.forEach(event => {
+        console.log(event)
+        const eventHtml = eventsHTML.eventsSideContainerHtmlMaker(event)
+        HtmlForAllEvents += eventHtml
+      })
+      eventContainer.innerHTML = HtmlForAllEvents
+    },
+  
   saveUserEvents() {
     console.log("SAVE events")
   },
