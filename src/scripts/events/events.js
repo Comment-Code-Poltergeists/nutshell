@@ -28,7 +28,20 @@ const eventManager = {
   },
   displayUserEvents() {
     console.log("DISPLAY events")
-    mainContainerRef.innerHTML= "<h1>MORE EVENTS</h1>"
+    eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
+    console.log(eventsArray)
+
+    let sortedEventsArray = sortElementsByDate(eventsArray, "eventDate")
+   console.log(sortedEventsArray)
+
+      let HtmlForAllEvents= ""
+      sortedEventsArray.forEach(event => {
+        console.log(event)
+        const eventHtml = eventsHTML.eventsMainContainerHtmlMaker(event)
+        HtmlForAllEvents += eventHtml
+      })
+      mainContainerRef.innerHTML = "<h1>All Events</h1>"
+      mainContainerRef.innerHTML += HtmlForAllEvents
   }
   
 }
