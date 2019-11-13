@@ -1,0 +1,19 @@
+/* 
+Purpose: styling for 'messages' DOM elements
+Author: Ryan Bishop
+*/
+
+.message {
+    background-color: white;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.message-timestamp {
+    font-size: 0.75em;
+}
+
+#new-message {
+    border: none;
+    border-radius: 5px;
+}
