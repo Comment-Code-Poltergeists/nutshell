@@ -4,18 +4,12 @@
     or the dashboard should be rendered.
 */
 import API from "./data/data.js"
-import friendsJS from "./friends/friends.js"
+import { friendsDisplay } from "./friends/friends.js"
 
 // API.fetchFriendsList(1).then((friendData) => console.log(friendData))
 //tried to make a big function to get everything at the start, doesnt quite work :(
-API.fetchEverything(userId).then(yourInfo => {
-    let data = sessionStorage.getItem("articles")
-    populateArticleModule(JSON.parse(data))
-    articlesEventListener();
+API.fetchEverything(2)
+.then(response => {
+    friendsDisplay()
 })
 // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
-
-// TESTING
-
-const friendsList = JSON.parse(window.sessionStorage.getItem("friends"))
-friendsJS.displaySideFriendsList(friendsList)
