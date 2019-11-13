@@ -9,7 +9,7 @@ export const displayFriends = () => {
 
     // adds scroll bar to friends side container and main when populated
     const friendsContentMain = document.getElementById("main-container")
-    friendsContentMain.scrollTop = friendsContentMain.scrollHeight 
+    friendsContentMain.scrollTop = friendsContentMain.scrollHeight
     const friendsContent = document.getElementById("friends-content")
     friendsContent.scrollTop = friendsContent.scrollHeight
 }
