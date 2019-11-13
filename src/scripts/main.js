@@ -6,14 +6,16 @@
 import API from "./data/data.js"
 import { displayMessages } from "./messages/messages.js"
 import { eventsClickHandler } from "./events/eventListeners.js"
+import eventManager from "./events/events"
+import { renderTaskCard } from "./tasks/renderDOM.js"
+import { clickTaskCardListener } from "./tasks/eventListeners.js"
 import { displayFriends } from "./friends/friends.js"
-import eventManager from "./events/events.js"
 sessionStorage.setItem("userId", "2")
 const userId = JSON.parse(sessionStorage.getItem("userId"))
 
 
 //tried to make a big function to get everything at the start, doesnt quite work :(
-API.fetchEverything(2).then(() => {
+API.fetchEverything(userId).then(yourInfo => {
     displayMessages()
     displayFriends()
     eventManager.displayEvents()
@@ -21,4 +23,6 @@ API.fetchEverything(2).then(() => {
 
 
 eventsClickHandler() // looking for a click on the Events container
+renderTaskCard()
+clickTaskCardListener()
 
