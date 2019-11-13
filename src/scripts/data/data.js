@@ -13,9 +13,9 @@ export default {
         return this.fetchFriendsList(userId)
         //first fetch, getting all of your friends
             .then(friendObjs => {
-                let IdArray = []
+                let IdArray = [userId]
                 friendObjs.forEach(element => {
-                    IdArray.push(element.id)
+                    IdArray.push(element.userId)
                 });
                 let fetchArticlesUrl = `${baseUrl}/articles?userId=${userId}`
                 let fetchEventsUrl = `${baseUrl}/events?userId=${userId}`
@@ -65,6 +65,7 @@ export default {
     },
 
     deleteSomething: function(endUrl) {
+        console.log("delete function called")
         return fetch(`${baseUrl}/${endUrl}`, {
             method: "Delete"
         })
