@@ -5,7 +5,6 @@
 */
 import API from "./data/data.js"
 import { displayMessages } from "./messages/messages.js"
-import { eventsClickHandler } from "./events/eventListeners.js"
 import eventManager from "./events/events"
 import { populateArticleModule } from "./articles/articles.js"
 import { renderTaskCard } from "./tasks/renderDOM.js"
@@ -18,12 +17,12 @@ export const userId = JSON.parse(sessionStorage.getItem("userId"))
 API.fetchEverything(userId).then(yourInfo => {
     displayMessages()
     displayFriends()
+    eventManager.displaySideEvents()
+    eventManager.setAllEventListeners()
     populateArticleModule();
-    eventManager.displayEvents()
+
 })
 
-
-eventsClickHandler() // looking for a click on the Events container
 renderTaskCard()
 clickTaskCardListener()
 
