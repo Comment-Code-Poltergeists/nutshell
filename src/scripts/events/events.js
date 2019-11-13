@@ -69,6 +69,25 @@ const eventManager = {
   
   },
 //*************************************************************************
+// REFRESH the events in the MAIN container
+//*************************************************************************
+  refreshMainEvents(){
+    eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
+    console.log(eventsArray)
+
+    let sortedEventsArray = sortElementsByDate(eventsArray, "eventDate")
+    console.log(sortedEventsArray)
+
+    let HtmlForAllEvents = ""
+    sortedEventsArray.forEach(event => {
+      console.log(event)
+      const eventHtml = eventsHTML.eventsMainContainerHtmlMaker(event)
+      HtmlForAllEvents += eventHtml
+    })
+    mainContainerRef.innerHTML = "<h1>All Events</h1>"
+    mainContainerRef.innerHTML += HtmlForAllEvents
+  },
+//*************************************************************************
 // DELETE a new event
 //*************************************************************************
   deleteAnEvent() {
@@ -97,8 +116,8 @@ const eventManager = {
     });
         data.buildYourOwnGet(Url).then((eventsArray) => {
         sessionStorage.setItem("events",JSON.stringify(eventsArray));
-        this.displaySideEvents();
-        this.displayMainEvents();
+        eventManager.displaySideEvents();
+        eventManager.refreshMainEvents();
     })
 }
 
