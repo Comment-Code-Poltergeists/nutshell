@@ -17,7 +17,7 @@ export default {
         return `
             <span class="message-timestamp">${formattedtime}</span>
             <span><strong>${message.user.fullName}</strong></span>
-            <p id="message--${message.id}" class="message">${message.message}</p>
+            <p id="message--${message.id}" class="card bg-secondary border-dark">${message.message}</p>
         `
     }
 }
