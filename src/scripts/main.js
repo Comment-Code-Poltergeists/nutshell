@@ -10,13 +10,11 @@ import eventManager from "./events/events"
 // API.fetchFriendsList(1).then((friendData) => console.log(friendData))
 //tried to make a big function to get everything at the start, doesnt quite work :(
 API.fetchEverything(2).then(yourInfo => {
-    let data = sessionStorage.getItem("messages")
-    console.log("messages", JSON.parse(data))
+    displayMessages()
 })
 // API.buildYourOwnGet("messages?userId=1").then(messages => console.log("messages", messages))
 
 
 
-displayMessages()
 eventManager.getUserEvents()
 eventManager.eventsClickHandler()

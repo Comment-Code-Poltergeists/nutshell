@@ -7,20 +7,14 @@ import messagesHtmlFactory from "./messagesHtmlFactory";
 import { attachMessagesEvents } from "./messagesEventListeners.js";
 import data from "../data/data";
 
-// Given a user wants to enter in a chat message
-// When the user activates their account
-// And enters a message into the New message text input
-// Then their message should appear in the Chat area, prepended with the user's name
-
-const messagesContainer = document.getElementById("messages-container")
+const messagesContent = document.getElementById("messages-content")
 
 const renderMessageList = messageArray => {
-    const messagesContent = document.getElementById("messages-content")
     messagesContent.innerHTML = ""
     messageArray.forEach(message => {
         messagesContent.innerHTML += messagesHtmlFactory.createPreviousMessageHtml(message)
     })
-    messagesContent.scrollTop = messagesContent.scrollHeight
+    // messagesContent.scrollTop = messagesContent.scrollHeight
 }
 
 export function displayMessages(){
@@ -29,9 +23,11 @@ export function displayMessages(){
         renderMessageList(prevMessages)
     } else {
         data.buildYourOwnGet("messages?_expand=user")
-            .then(messages => {
-                sessionStorage.setItem("messages", JSON.stringify(messages));
-                renderMessageList(messages)
-            })
+        .then(messages => {
+            sessionStorage.setItem("messages", JSON.stringify(messages));
+            renderMessageList(messages)
+        })
     }
+    const messagesContent = document.getElementById("messages-content")
+    messagesContent.scrollTop = messagesContent.scrollHeight
 }
