@@ -8,7 +8,7 @@ export const buildSideFriendHTML = friendObj => {
     `
 }
 
-// build individual friend card for side container
+// build individual friend card for main container
 export const buildMainFriendHTML = friendObj => {
     return `
     <div class="friend-card">

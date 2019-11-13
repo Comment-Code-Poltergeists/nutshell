@@ -11,9 +11,9 @@ export const displaySideFriendsList = friendsArray => {
 
 // displays friend cards in side container
 export const displayMainFriendsList = friendsArray => {
-    let friendsListHTML = ""
+    let friendsListHTML = "<h1>Friends List</h1>"
     for (let friend of friendsArray) {
         friendsListHTML += buildMainFriendHTML(friend)
     }
-    document.querySelector("#main-content").innerHTML = friendsListHTML
+    document.querySelector("#main-container").innerHTML = friendsListHTML
 }
