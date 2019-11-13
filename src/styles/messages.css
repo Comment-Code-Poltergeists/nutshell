@@ -17,3 +17,7 @@ Author: Ryan Bishop
     border: none;
     border-radius: 5px;
 }
+
+.btn-message {
+    width: 50%;
+}
