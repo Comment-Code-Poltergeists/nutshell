@@ -1,6 +1,9 @@
 //Author: Sully, Purpose: putting everything together for one function to be called in main
 import { makeArticleCard } from "./htmlMaker";
 import { articlesEventListener, addMainEventListener } from "./eventListeners";
+import {userId} from "../main.js"
+import API from "../data/data.js"
+import { populateArticlesToMain } from "./ArticlesToMain";
 
 export const populateArticleModule = () => {
 const containerRef = document.getElementById("articles-content")
@@ -11,4 +14,17 @@ data.forEach(element => {
     containerRef.innerHTML += newArt
 });
 articlesEventListener();
+}
+
+export const updateDomArticles = () => {
+    const friendsList = JSON.parse(sessionStorage.getItem("friends"))
+    let Url = `articles?userId=${userId}`;
+    friendsList.forEach(element => {
+        Url += `&userId=${element.user.id}`
+    });
+    API.buildYourOwnGet(Url).then((articlesArray) => {
+        sessionStorage.setItem("articles",JSON.stringify(articlesArray));
+        populateArticleModule();
+        populateArticlesToMain();
+    })
 }
