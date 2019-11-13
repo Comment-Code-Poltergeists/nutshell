@@ -1,8 +1,73 @@
 {
-    "users": [],
-    "articles": [],
-    "messages": [],
-    "events": [],
-    "tasks": [],
-    "friends": []
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Gandalf",
+      "email": "youshallnotspam@example.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "fullName": "Bilbo",
+      "email": "imgoingtospam@example.com",
+      "password": "123457"
+    },
+    {
+      "id": 3,
+      "fullName": "Samwise",
+      "email": "potatoes@example.com",
+      "password": "123458"
+    },
+    {
+      "id": 4,
+      "fullName": "Sauron",
+      "email": "iseeyou@mordor.gov",
+      "password": "123459"
+    }
+  ],
+  "articles": [{
+    "id": 1,
+    "fullName": "Gandalf",
+    "email": "youshallnotspam@example.com",
+    "password": "123456"
+  },
+  {
+    "id": 2,
+    "fullName": "Bilbo",
+    "email": "imgoingtospam@example.com",
+    "password": "123457"
+  },
+  {
+    "id": 3,
+    "fullName": "Samwise",
+    "email": "potatoes@example.com",
+    "password": "123458"
+  },
+  {
+    "id": 4,
+    "fullName": "Sauron",
+    "email": "iseeyou@mordor.gov",
+    "password": "123459"
+  },
+    {
+      "id": 4,
+      "userId": 3,
+      "url": "url4.lotr.com",
+      "title": "title, id: 4, userId: 3",
+      "synopsis": "synopsis, id: 4, userId: 3",
+      "timestamp": "2012-04-26T18:25:43.511Z"
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "url": "url5.lotr.com",
+      "title": "title, id: 5, userId: 3",
+      "synopsis": "synopsis, id: 5, userId: 3",
+      "timestamp": "2012-04-27T18:25:43.511Z"
+    }
+  ],
+  "messages": [],
+  "events": [],
+  "tasks": [],
+  "friends": []
 }

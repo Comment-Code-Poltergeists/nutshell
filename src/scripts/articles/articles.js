@@ -1,6 +1,6 @@
 //Author: Sully, Purpose: putting everything together for one function to be called in main
 import { makeArticleCard } from "./htmlMaker";
-import { articlesEventListener } from "./eventListeners";
+import { articlesEventListener, addMainEventListener } from "./eventListeners";
 
 export const populateArticleModule = () => {
 const containerRef = document.getElementById("articles-content")

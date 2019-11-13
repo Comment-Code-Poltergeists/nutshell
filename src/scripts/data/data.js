@@ -65,6 +65,7 @@ export default {
     },
 
     deleteSomething: function(endUrl) {
+        console.log("delete function called")
         return fetch(`${baseUrl}/${endUrl}`, {
             method: "Delete"
         })

@@ -7,6 +7,7 @@ import { userId } from "../main";
 export const articlesEventListener = () => {
 document.getElementById("articles-container").addEventListener("click", () => {
     populateArticlesToMain();
+    addMainEventListener();
 })}
 
 export const addMainEventListener = () => {

@@ -10,5 +10,4 @@ articleArray.forEach(element => {
     const newArt = makeArticleCardMain(element);
     mainRef.innerHTML += newArt;
 });
-addMainEventListener();
 }
