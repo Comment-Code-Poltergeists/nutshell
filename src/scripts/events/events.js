@@ -7,7 +7,7 @@ let eventsArray = []
 
 
 const eventManager = {
-  displayEvents() {
+  displaySideEvents() {
     console.log("GET events")
     eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
     console.log(eventsArray)
@@ -28,7 +28,7 @@ const eventManager = {
   saveUserEvents() {
     console.log("SAVE events")
   },
-  displayUserEvents() {
+  displayMainEvents() {
     console.log("DISPLAY events")
     eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
     console.log(eventsArray)
