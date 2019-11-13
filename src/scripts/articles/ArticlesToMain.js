@@ -1,4 +1,10 @@
+import { makeArticleCardMain } from "./htmlMaker";
+
 export const populateArticlesToMain = () => {
 const mainRef = document.getElementById("main-content")
-mainRef.innerText = "This is the main thing"
+const articleArray = JSON.parse(sessionStorage.getItem("articles"))
+articleArray.forEach(element => {
+    const newArt = makeArticleCardMain(element);
+    mainRef.innerHTML += newArt;
+});
 }
