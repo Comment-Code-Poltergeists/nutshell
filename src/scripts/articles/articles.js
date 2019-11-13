@@ -16,6 +16,7 @@ data.forEach(element => {
 articlesEventListener();
 }
 
+//update the articles shown on the dom in both main and the articles section
 export const updateDomArticles = () => {
     const friendsList = JSON.parse(sessionStorage.getItem("friends"))
     let Url = `articles?userId=${userId}`;

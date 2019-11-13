@@ -7,12 +7,16 @@ import { userId } from "../main";
 import { articleForm } from "./htmlMaker";
 import {updateDomArticles} from "./articles.js"
 import { createDateTimeToISO } from "../utilities/datetime";
+
+//set an event listener on the articles section
 export const articlesEventListener = () => {
 document.getElementById("articles-container").addEventListener("click", () => {
     populateArticlesToMain();
     addMainEventListener();
 })}
 
+
+//set an event listener on the main container
 export const addMainEventListener = () => {
     const MainRef = document.getElementById("main-container");
     MainRef.addEventListener("click", (event) => {
