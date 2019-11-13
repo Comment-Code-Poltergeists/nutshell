@@ -15,21 +15,27 @@ export const addMainEventListener = () => {
     MainRef.addEventListener("click", (event) => {
         if(event.target.id.includes("edit-article")){
             console.log("edit that article!!")
+            
+
 
         } else if(event.target.id.includes("delete-article")){
             const id = event.target.id.split("-")[2]
             API.deleteSomething(`articles/${id}`).then(() => {
-                const friendsList = JSON.parse(sessionStorage.getItem("friends"))
-                let Url = `articles?userId=${userId}`;
-                friendsList.forEach(element => {
-                    Url += `&userId=${element.user.id}`
-                });
-                API.buildYourOwnGet(Url).then((articlesArray) => {
-                    sessionStorage.setItem("articles",JSON.stringify(articlesArray));
-                    populateArticleModule();
-                    populateArticlesToMain();
-                })
+                updateDomArticles();
             })
         }
+    })
+}
+
+const updateDomArticles = () => {
+    const friendsList = JSON.parse(sessionStorage.getItem("friends"))
+    let Url = `articles?userId=${userId}`;
+    friendsList.forEach(element => {
+        Url += `&userId=${element.user.id}`
+    });
+    API.buildYourOwnGet(Url).then((articlesArray) => {
+        sessionStorage.setItem("articles",JSON.stringify(articlesArray));
+        populateArticleModule();
+        populateArticlesToMain();
     })
 }

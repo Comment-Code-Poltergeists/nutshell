@@ -17,3 +17,6 @@ export const makeArticleCardMain = (articleObj) => {
     <button id="delete-article-${articleObj.id}">Delete</button>
     </div>`
 }
+export const articleForm = () => {
+    return
+}
