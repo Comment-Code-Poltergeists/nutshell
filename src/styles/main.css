@@ -37,6 +37,7 @@
   padding: 2px;
   background-color: grey;
   margin-bottom: 1px;
+  border-radius: .25rem;
 }
 
 .friend-inline-el {
