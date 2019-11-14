@@ -11,18 +11,25 @@ import { renderTaskCard } from "./tasks/renderDOM.js"
 import { clickTaskCardListener } from "./tasks/eventListeners.js"
 import { displayFriends } from "./friends/friends.js"
 import { addArticleEventListeners } from "./articles/eventListeners.js"
+import {addLoginButtonListener} from "./auth/eventListeners.js"
 // sessionStorage.setItem("userId", "2")
 sessionStorage.clear();
 export const userId = JSON.parse(sessionStorage.getItem("userId"))
+if (sessionStorage.getItem("userId") !== null) {
+    
+    API.fetchEverything(userId).then(yourInfo => {
+        displayMessages()
+        displayFriends()
+        eventManager.displaySideEvents()
+        eventManager.setAllEventListeners()
+        populateArticleModule();
+        addArticleEventListeners();
+        renderTaskCard()
+        clickTaskCardListener()
+    })
+} else {
+    $("#login-modal").modal("show")
+addLoginButtonListener();
+}
 
 
-API.fetchEverything(userId).then(yourInfo => {
-    displayMessages()
-    displayFriends()
-    eventManager.displaySideEvents()
-    eventManager.setAllEventListeners()
-    populateArticleModule();
-    addArticleEventListeners();
-    renderTaskCard()
-    clickTaskCardListener()
-})
