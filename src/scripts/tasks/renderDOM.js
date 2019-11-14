@@ -1,4 +1,5 @@
 import buildDOM from "./buildDOM.js";
+import API from "../data/data.js"
 
 export const renderTaskCard = () => {
   const tasks = JSON.parse(sessionStorage.getItem("tasks"))
@@ -27,3 +28,14 @@ export const renderTaskMain = () => {
 
   mainContent.appendChild(taskMain);
 };
+
+export const renderTaskForm = (taskId) => {
+  if( taskId !== undefined ) {
+    const taskCardToEdit = document.querySelector(`#main-task--${taskId}`)
+    API.buildYourOwnGet(`tasks/${taskId}`).then(task => {
+      taskCardToEdit.innerHTML = buildDOM.buildTaskForm(task)
+    })
+  } else {
+
+  }
+}
