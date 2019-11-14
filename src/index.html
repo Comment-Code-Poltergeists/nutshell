@@ -25,40 +25,66 @@
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
       <li class="nav-item ">
-        <a class="nav-link" href="#">Logout</a>
+        <button type="button" class="nav-item btn btn-primary login" data-toggle="modal" data-target="#login-modal"
+          id="loginButton">Login</button>
       </li>
     </ul>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="login-modal-title">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="login-modal-body">
+            <div class="card-body">
+              <label for="login-name--new">Username:</label>
+              <input id="login-name--new" type="text" class="form-control" value="">
+              <label for="login-date--new">Password:</label>
+              <input id="login-date--new" type="password" class="form-control" value="">
+            </div>
+          </div>
+          <div class="modal-footer" id="nutshell-modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row" id="components-container">
       <div class="col-lg-3">
         <div id="events-container" class="card side-components">
           <h3>Events</h3>
-          <article id="events-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="events-content" class="card-body overflow-auto"></article>
         </div>
 
         <div id="articles-container" class="card side-components">
           <h3>Articles</h3>
-          <article id="articles-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="articles-content" class="card-body overflow-auto"></article>
         </div>
         <div id="tasks-container" class="card side-components">
           <h3>To Do</h3>
-          <article id="tasks-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="tasks-content" class="card-body overflow-auto"></article>
         </div>
       </div>
 
       <div id="main-container" class="col-lg-6 main overflow-auto">
         <h3>Main</h3>
-        <article id="main-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+        <article id="main-content" class="card-body overflow-auto"></article>
       </div>
 
 
       <div class="col-lg-3">
         <div id="friends-container" class="card side-components">
           <h3>Friends</h3>
-          <article id="friends-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="friends-content" class="card-body overflow-auto"></article>
         </div>
         <div id="messages-container" class="card side-components">
           <h3>Messages</h3>
-          <article id="messages-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="messages-content" class="card-body overflow-auto"></article>
         </div>
         <div id="ads-container" class="card side-components">
           <h3>Your Ad Here</h3>
@@ -107,8 +133,8 @@
       </div>
     </div>
     <div class="nav footer text-muted align-items-center">
-      <button type="button" class="nav-item btn btn-primary action" data-toggle="modal"
-        data-target="#nutshell-modal" id="mainButton">Action</button>
+      <button type="button" class="nav-item btn btn-primary action" data-toggle="modal" data-target="#nutshell-modal"
+        id="mainButton">Action</button>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
