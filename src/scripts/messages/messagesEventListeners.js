@@ -13,17 +13,16 @@ import messagesHtmlFactory from "./messagesHtmlFactory.js";
 const userId = JSON.parse(sessionStorage.getItem("userId"));
 
 const newMessageHandler = () => {
-	console.log("sending new message")
+	const messageInput = document.getElementById("message--new")
 	const message = document.getElementById("message--new").value;
-	console.log("message", message)
 	const timestamp = createDateTimeToISO();
-	console.log("messageObj", { userId, message, timestamp });
 	// POST request to /messages and re-render DOM
 	API.createSomething("messages", { userId, message, timestamp }).then(() => {
 		data.buildYourOwnGet("messages?_expand=user").then((messages) => {
 			sessionStorage.setItem("messages", JSON.stringify(messages));
 			displayMessages();
 			displayMainMessages();
+			messageInput.value = ""
 		});
 	});
 };
@@ -51,7 +50,6 @@ const prevMessageButtonHandler = () => {
 			updateMessageInputfield(saveEvent, message);
 		});
 	} else if (clickedButton[0] === "delete-message") {
-        console.log("deleting message", messageId)
         data.deleteSomething(`messages/${messageId}`)
             .then(() => {
                 data.buildYourOwnGet("messages?_expand=user").then((messages) => {
@@ -74,7 +72,8 @@ const prevMessageButtonHandler = () => {
 
 const messageContainerClickHandler = () => {
 	displayMainMessages();
-	// const actionButton = document.getElementById("nutshell-modal-title")
+	const mainButton = document.getElementById("mainButton")
+	mainButton.innerText = "New Message"
 	const buttonModalTitle = document.getElementById("nutshell-modal-title")
 	buttonModalTitle.textContent = "New Message"
 	const buttonModalBody = document.getElementById("nutshell-modal-body")
