@@ -103,5 +103,28 @@ eventsMainContainerHtmlMakerEdit(eventToEdit) {
   </fieldset>
   <button class="btn btn-primary" id="save-event--${eventToEdit}"> Save </button>
   </div>`
+},
+//*************************************************************************
+// Create a HTML content for ADD modal window
+//*************************************************************************
+buildNewEventForm(){
+return `
+      <div class="card-body">
+        <label for="event-name--new">Event name:</label>
+        <input id="event-name--new" type="text" class="form-control" value="">
+        <label for="event-date--new">Date:</label>
+        <input id="event-date--new" type="date" class="form-control" value="">
+        <label for="event-name--new">Location:</label>
+        <input id="event-location--new" type="text" class="form-control" value="">
+      </div>
+      `
+},
+//*************************************************************************
+// Create a BUTTONS for ADD modal window
+//*************************************************************************
+buildEventFormButtons(){
+  return `
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" id="new-event-save" class="btn btn-primary" data-dismiss="modal">Save changes</button>`
 }
 }
