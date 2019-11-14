@@ -12,6 +12,14 @@ let data = JSON.parse(sessionStorage.getItem("articles"))
 data.forEach(element => {
     const newArt = makeArticleCard(element);
     containerRef.innerHTML += newArt
+    const cardRef = document.getElementById(`articlecard-${element.id}`)
+    if (element.userId === userId) {
+        
+    } else {
+        cardRef.classList.add("csbg")
+        console.log(cardRef.classList)
+        
+    }
 });
 articlesEventListener();
 }

@@ -5,19 +5,17 @@ export const makeArticleCard = (articleObj) => {
     <h3 class="card-title" id="article-title">${articleObj.title}</h3>
     <p id="article-url"><a href="${articleObj.url}">Link Here</a></p>
     <p id="article-synopsis">${articleObj.synopsis}</p>
-    </div>`
+    </div>
+    <br>`
 }
 
 export const makeArticleCardMain = (articleObj) => {
-    return `<div class="card bg-secondary border-dark" id="articleCard-${articleObj.id}"
+    return `<div class="card bg-secondary border-dark" id="articleCard-${articleObj.id}">
     <h3 class="card-title" id="article-title-${articleObj.id}">${articleObj.title}</h3>
     <p id="article-url-${articleObj.id}"><a href="${articleObj.url}">Link Here</a></p>
     <p id="article-synopsis-${articleObj.id}">${articleObj.synopsis}</p>
-    <span class="task-buttons">
-    <button class="btn btn-sm btn-warning" id="edit-article-${articleObj.id}">✎</button>
-    <button class="btn btn-sm btn-danger" id="delete-article-${articleObj.id}">X</button>
-    </span>
-    </div>`
+    </div>
+    <br>`
 }
 export const articleForm = (id) => {
     return `<div><fieldset>
