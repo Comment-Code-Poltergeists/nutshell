@@ -13,6 +13,7 @@ export default {
             <br>
         `
     },
+    
     createPreviousMessageHtml(message){
         const formattedtime = convertDateTimeFromISO(message.timestamp).toLocaleString()
         const userId = JSON.parse(sessionStorage.getItem("userId"))
@@ -27,21 +28,34 @@ export default {
     createMainPreviousMessageHtml(message){
         const formattedtime = convertDateTimeFromISO(message.timestamp).toLocaleString()
         const userId = JSON.parse(sessionStorage.getItem("userId"))
+        
+        const friendsList = JSON.parse(window.sessionStorage.getItem("friends"))
+        const friendsIdArray = []
+        friendsList.forEach((friend) => {
+            const friendId = friend.userId
+            friendsIdArray.push(friendId)
+        })
 
         let editButton
         let deleteButton
         let buttonGroup
+        let friendStatus
 
         if (message.user.id === userId){
             editButton = `<button id="edit-message--${message.id}" class="btn btn-warning btn-sm btn-message">✎</button>`
             deleteButton = `<button id="delete-message--${message.id}" class="btn btn-danger btn-sm btn-message">X</button>`
             buttonGroup = `<div class="btn-group" role="group">${editButton}${deleteButton}</div>`
+            friendStatus = "current-user"
+        }
+        else if (!friendsIdArray.includes(message.user.id)){
+            friendStatus = "not-friend"
         }
         else {
             buttonGroup = ""
+            friendStatus = ""
         }
         return `
-            <span><strong>${message.user.fullName}</strong></span>
+            <span class=${friendStatus}><strong>${message.user.fullName}</strong></span>
             <span class="message-timestamp">${formattedtime}</span>
             <div class="card bg-secondary border-dark">
             <div id="main-message--${message.id}">${message.message}${buttonGroup}</div>
