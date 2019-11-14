@@ -37,12 +37,6 @@ const eventManager = {
     eventContainer.innerHTML = HtmlForAllEvents
   },
   //*************************************************************************
-  // SAVE new event
-  //*************************************************************************
-  saveUserEvents() {
-    console.log("SAVE events")
-  },
-  //*************************************************************************
   // Show the events in the MAIN container
   //*************************************************************************
   displayMainEvents() {
@@ -62,6 +56,9 @@ const eventManager = {
       })
       mainContainerRef.innerHTML = "<h1>All Events</h1>"
       mainContainerRef.innerHTML += HtmlForAllEvents
+
+      eventManager.saveNewEvent() // event listener for the save new event modal form
+      eventManager.saveNewEventListener() // event listener for ther save new event button
     })
   },
   //*************************************************************************
@@ -132,6 +129,47 @@ const eventManager = {
       }
     })
   },
+  //*************************************************************************
+  // SAVE a new event
+  //*************************************************************************
+  saveNewEvent(){
+
+    const modalTitle = document.querySelector("#nutshell-modal-title");
+    const modalBody = document.querySelector("#nutshell-modal-body");
+    const modalFooter = document.querySelector("#nutshell-modal-footer");
+  
+    modalTitle.textContent = "Add New Event";
+    modalBody.innerHTML = eventsHTML.buildNewEventForm();
+    modalFooter.innerHTML = eventsHTML.buildEventFormButtons();
+
+
+  },
+  //*************************************************************************
+  // Event listener for the SAVE new event button
+  //*************************************************************************
+  saveNewEventListener() {
+    const saveNewEventButton = document.querySelector("#new-event-save");
+    saveNewEventButton.addEventListener("click", () => {
+      // POST
+      const newEventName = document.querySelector("#event-name--new").value;
+      const newEventDate = document.querySelector("#event-date--new").value;
+      const newEventlocation = document.querySelector("#event-location--new").value;
+
+
+      if (newEventName && newEventDate && newEventlocation) {
+        const newEvent = {
+          userId: userId,
+          eventName: newEventName,
+          eventDate: newEventDate,
+          location: newEventlocation
+        };
+  
+        data.createSomething("events", newEvent).then(()=>{
+          eventManager.updateDomEvents()
+        })
+      }
+    })
+    },
   //*************************************************************************
   // REFRESH the DOM
   //*************************************************************************
