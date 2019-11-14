@@ -85,18 +85,20 @@ export function attachMessagesEvents() {
 		friend.addEventListener("click", () => {
 			const friendId = event.target.id.split("--")[1]
 			//TODO: add friend using userId
-			data.createSomething("friends", {"userId": parseInt(friendId), "loggedInUser": userId})
-			.then(r => {
-                // GET updated friends list
-                data.buildYourOwnGet(`friends?loggedInUser=${userId}&_expand=user`)
-                .then(updatedFriendsArray => {
-                    // update session storage
-                    sessionStorage.setItem("friends", JSON.stringify(updatedFriendsArray))
-                    // render dom with new data
-					refreshFriendsDisplay(updatedFriendsArray)
-					displayMainMessages()
-                })
-            })
+			if (window.confirm("Would you like to add this person as a friend?")){
+				data.createSomething("friends", {"userId": parseInt(friendId), "loggedInUser": userId})
+				.then(r => {
+					// GET updated friends list
+					data.buildYourOwnGet(`friends?loggedInUser=${userId}&_expand=user`)
+					.then(updatedFriendsArray => {
+						// update session storage
+						sessionStorage.setItem("friends", JSON.stringify(updatedFriendsArray))
+						// render dom with new data
+						refreshFriendsDisplay(updatedFriendsArray)
+						displayMainMessages()
+					})
+				})
+			}
 		})
 	})
 }
