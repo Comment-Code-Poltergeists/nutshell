@@ -45,9 +45,9 @@ const cacheAndRenderTasks = () => {
 const renderMainWithListener = () => {
   renderTaskMain();
   taskMainEventListener();
-  // populate blank task form in modal
   renderNewTaskForm();
   saveNewTaskListener();
+  window.scrollTo(0,0)
 };
 
 export const taskMainEventListener = () => {
@@ -84,6 +84,5 @@ export const taskMainEventListener = () => {
 
 export const clickTaskCardListener = () => {
   const taskCardContainer = document.querySelector("#tasks-container");
-
   taskCardContainer.addEventListener("click", renderMainWithListener);
 };
