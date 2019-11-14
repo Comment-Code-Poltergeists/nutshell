@@ -58,3 +58,7 @@
   left: 2px;
   float: right;
 }
+
+body {
+  font-family: fantasy;
+}
