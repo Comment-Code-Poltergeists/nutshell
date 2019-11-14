@@ -7,7 +7,6 @@ export const makeArticleCard = (articleObj) => {
     <h3 class="card-title" id="article-title">${articleObj.title}</h3>
     <p id="article-url"><a href="${articleObj.url}">Link Here</a></p>
     <p id="article-synopsis">${articleObj.synopsis}</p>
-    <p id="article-date">${convertDateTimeFromISO(articleObj.timestamp).toLocaleString()}</p>
     </div>
     <br>`
 }
@@ -17,6 +16,7 @@ export const makeArticleCardMain = (articleObj) => {
     <h3 class="card-title" id="article-title-${articleObj.id}">${articleObj.title}</h3>
     <p id="article-url-${articleObj.id}"><a href="${articleObj.url}">Link Here</a></p>
     <p id="article-synopsis-${articleObj.id}">${articleObj.synopsis}</p>
+    <p id="article-date">${convertDateTimeFromISO(articleObj.timestamp).toLocaleString()}</p>
     </div>
     <br>`
 }
