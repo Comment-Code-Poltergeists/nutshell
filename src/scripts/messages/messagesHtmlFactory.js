@@ -15,6 +15,18 @@ export default {
     createPreviousMessageHtml(message){
         const formattedtime = convertDateTimeFromISO(message.timestamp).toLocaleString()
         const userId = JSON.parse(sessionStorage.getItem("userId"))
+
+        return `
+            <span class="message-timestamp">${formattedtime}</span>
+            <span><strong>${message.user.fullName}</strong></span>
+            <div id="message--${message.id}" class="card bg-secondary border-dark">${message.message}
+            </div>
+            `
+    },
+    createMainPreviousMessageHtml(message){
+        const formattedtime = convertDateTimeFromISO(message.timestamp).toLocaleString()
+        const userId = JSON.parse(sessionStorage.getItem("userId"))
+
         let editButton
         let deleteButton
         let buttonGroup
@@ -24,11 +36,15 @@ export default {
             deleteButton = `<button id="delete-message--${message.id}" class="btn btn-danger btn-sm btn-message">X</button>`
             buttonGroup = `<div class="btn-group" role="group">${editButton}${deleteButton}</div>`
         }
+        else {
+            buttonGroup = ""
+        }
         return `
-            <span class="message-timestamp">${formattedtime}</span>
             <span><strong>${message.user.fullName}</strong></span>
-            <div id="message--${message.id}" class="card bg-secondary border-dark">${message.message}
-            ${buttonGroup}</div>
+            <span class="message-timestamp">${formattedtime}</span>
+            <div class="card bg-secondary border-dark">
+            <div id="main-message--${message.id}">${message.message}${buttonGroup}</div>
+            </div>
             `
     }
 }
