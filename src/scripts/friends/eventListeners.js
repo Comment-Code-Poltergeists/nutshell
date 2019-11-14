@@ -3,8 +3,10 @@ import dataJS from "../data/data.js"
 import { userId } from "../main.js"
 
 // display friends list in main when friends side container is clicked
-export const clickFriendsSideContainer = (friendsList) => {
+export const clickFriendsSideContainer = () => {
     document.querySelector("#friends-container").addEventListener("click", event => {
+        const friendsList = JSON.parse(sessionStorage.getItem("friends"))
+        console.log("friendsList", friendsList)
         displayMainFriendsList(friendsList)
     })
 }

@@ -5,5 +5,5 @@ import { clickFriendsSideContainer } from "./eventListeners.js"
 export const displayFriends = () => {
     const friendsList = JSON.parse(window.sessionStorage.getItem("friends"))
     displaySideFriendsList(friendsList)
-    clickFriendsSideContainer(friendsList)
+    clickFriendsSideContainer()
 }
