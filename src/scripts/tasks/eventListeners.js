@@ -1,5 +1,33 @@
-import { renderTaskCard, renderTaskMain, renderTaskForm } from "./renderDOM.js";
+import {
+  renderTaskCard,
+  renderTaskMain,
+  renderEditTaskForm,
+  renderNewTaskForm
+} from "./renderDOM.js";
 import API from "../data/data.js";
+const user = sessionStorage.getItem("userId");
+
+const saveNewTaskListener = () => {
+  const saveNewTaskButton = document.querySelector("#new-task-save");
+  saveNewTaskButton.addEventListener("click", () => {
+    // POST
+    const newTaskName = document.querySelector("#task-name--new").value;
+    const newTaskDate = document.querySelector("#task-date--new").value;
+
+    if (newTaskName && newTaskDate) {
+      const newTask = {
+        userId: user,
+        task: newTaskName,
+        expectedCompletionDate: newTaskDate,
+        isComplete: false
+      };
+
+      API.createSomething("tasks", newTask).then(() => {
+        cacheAndRenderTasks();
+      });
+    }
+  });
+};
 
 const cacheAndRenderTasks = () => {
   const userId = JSON.parse(sessionStorage.getItem("userId"));
@@ -16,10 +44,13 @@ const cacheAndRenderTasks = () => {
 
 const renderMainWithListener = () => {
   renderTaskMain();
-  isCompleteTaskListener();
+  taskMainEventListener();
+  // populate blank task form in modal
+  renderNewTaskForm();
+  saveNewTaskListener();
 };
 
-export const isCompleteTaskListener = () => {
+export const taskMainEventListener = () => {
   const taskMainContainer = document.querySelector("#task-main");
 
   taskMainContainer.addEventListener("click", () => {
@@ -32,7 +63,7 @@ export const isCompleteTaskListener = () => {
     } else if (taskAction === "delete-task") {
       API.deleteSomething(`tasks/${taskId}`).then(cacheAndRenderTasks);
     } else if (taskAction === "edit-task") {
-      renderTaskForm(taskId);
+      renderEditTaskForm(taskId);
     } else if (taskAction === "save-task") {
       const editedTaskName = document.querySelector(`#task-name--${taskId}`)
         .value;
@@ -42,9 +73,11 @@ export const isCompleteTaskListener = () => {
         task: editedTaskName,
         expectedCompletionDate: editedTaskDate
       };
-      API.patchSomething(`tasks/${taskId}`, editedTask).then(cacheAndRenderTasks)
+      API.patchSomething(`tasks/${taskId}`, editedTask).then(
+        cacheAndRenderTasks
+      );
     } else if (taskAction === "cancel-task") {
-      cacheAndRenderTasks()
+      cacheAndRenderTasks();
     }
   });
 };
