@@ -61,5 +61,21 @@ export default {
             <div id="main-message--${message.id}">${message.message}${buttonGroup}</div>
             </div>
             `
-    }
+    },
+    buildNewMessageForm() {
+        const newMessageForm = `
+        <div class="card-body">
+          <label for="message--new">Message:</label>
+          <input id="message--new" type="text" class="form-control">
+        </div>
+        `
+  
+      return newMessageForm
+    },
+    buildMessageFormButtons() {
+        return `
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id="new-message-save" class="btn btn-primary" data-dismiss="modal">Post Message</button>
+        `
+      }
 }
