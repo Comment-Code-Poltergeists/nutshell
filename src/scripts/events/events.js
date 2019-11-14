@@ -36,7 +36,6 @@ const eventManager = {
       HtmlForAllEvents += eventHtml
     })
     eventContainer.innerHTML = HtmlForAllEvents
-
   },
 //*************************************************************************
 // SAVE new event
@@ -65,8 +64,6 @@ const eventManager = {
       mainContainerRef.innerHTML = "<h1>All Events</h1>"
       mainContainerRef.innerHTML += HtmlForAllEvents
     })
-    
-  
   },
 //*************************************************************************
 // REFRESH the events in the MAIN container
@@ -119,9 +116,33 @@ const eventManager = {
         eventManager.displaySideEvents();
         eventManager.refreshMainEvents();
     })
-}
+},
+//*************************************************************************
+// EDIT an event
+//*************************************************************************
+updateAnEvent(){
+  document.getElementById("main-container").addEventListener("click", function (e) {
+    console.log(e.target.id)
+    if (event.target.id.startsWith("edit-event")) {
+      const eventToEdit = event.target.id.split("--")[1]
+      console.log(`Please edit event number:  ${eventToEdit}`)
+      eventContainerForEdit = `event-container--${eventToEdit}`
+      eventContainerForEdit.innerHTML = eventsMainContainerHtmlMakerEdit()
 
-}
+      data.buildYourOwnGet(`events/${id}`).then((eventsObj) => {
+        document.getElementById(`eventName-${id}`).value = eventsObj.name
+        document.getElementById(`eventDate-${id}`).value = eventsObj.date
+        document.getElementById(`location-${id}`).value = eventsObj.location
+    })
 
+      // data.patchSomething(`events/${eventToEdit}`)
+      // data.fetchEverything(userId)
+      // .then(()=>{
+      //   eventManager.updateDomEvents()
+      // })
+    }
+  })
+}
+}
 
 export default eventManager
