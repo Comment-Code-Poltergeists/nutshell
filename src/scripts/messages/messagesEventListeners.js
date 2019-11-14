@@ -6,6 +6,7 @@ import API from "../data/data.js";
 import { createDateTimeToISO } from "../utilities/datetime.js";
 import { displayMessages, displayMainMessages } from "./messages.js";
 import data from "../data/data.js";
+import { refreshFriendsDisplay } from "../friends/friendsDisplay.js"
 
 //get logged-in user
 const userId = JSON.parse(sessionStorage.getItem("userId"));
@@ -80,4 +81,22 @@ export function attachMessagesEvents() {
 	// document.getElementById("send-message").addEventListener("click", newMessageHandler)
 	document.getElementById("main-container").addEventListener("click", prevMessageButtonHandler);
 	document.getElementById("messages-container").addEventListener("click", messageContainerClickHandler);
+	document.querySelectorAll(".not-friend").forEach(friend => {
+		friend.addEventListener("click", () => {
+			const friendId = event.target.id.split("--")[1]
+			//TODO: add friend using userId
+			data.createSomething("friends", {"userId": parseInt(friendId), "loggedInUser": userId})
+			.then(r => {
+                // GET updated friends list
+                data.buildYourOwnGet(`friends?loggedInUser=${userId}&_expand=user`)
+                .then(updatedFriendsArray => {
+                    // update session storage
+                    sessionStorage.setItem("friends", JSON.stringify(updatedFriendsArray))
+                    // render dom with new data
+					refreshFriendsDisplay(updatedFriendsArray)
+					displayMainMessages()
+                })
+            })
+		})
+	})
 }

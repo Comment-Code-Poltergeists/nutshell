@@ -1,6 +1,6 @@
 /*
 Purpose: create HTML for each of the 'messages' DOM elements
-Author: Ryan Bishop
+Author(s): Ryan Bishop, Chase Fite
  */
 import { convertDateTimeFromISO } from "../utilities/datetime"
 
@@ -55,7 +55,7 @@ export default {
             friendStatus = ""
         }
         return `
-            <span class=${friendStatus}><strong>${message.user.fullName}</strong></span>
+            <strong><span id="add-friend--${message.user.id}"class=${friendStatus}>${message.user.fullName}</span></strong>
             <span class="message-timestamp">${formattedtime}</span>
             <div class="card bg-secondary border-dark">
             <div id="main-message--${message.id}">${message.message}${buttonGroup}</div>
