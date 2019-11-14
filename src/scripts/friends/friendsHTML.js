@@ -15,7 +15,7 @@ export const buildMainFriendHTML = friendObj => {
         <div class="friend-inline-el">${friendObj.user.fullName}</div>
         <div class="remove-button-container">
             <span class="friend-inline-el">${friendObj.user.email}</span>
-            <button class="remove-button btn btn-sm btn-danger">X</button>
+            <button id="removeButton-${friendObj.id}" class="remove-button btn btn-sm btn-danger">X</button>
         </div>
     </div>
     `
