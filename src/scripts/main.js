@@ -10,6 +10,7 @@ import { populateArticleModule } from "./articles/articles.js"
 import { renderTaskCard } from "./tasks/renderDOM.js"
 import { clickTaskCardListener } from "./tasks/eventListeners.js"
 import { displayFriends } from "./friends/friends.js"
+import { addArticleEventListeners } from "./articles/eventListeners.js"
 sessionStorage.setItem("userId", "2")
 export const userId = JSON.parse(sessionStorage.getItem("userId"))
 
@@ -20,6 +21,7 @@ API.fetchEverything(userId).then(yourInfo => {
     eventManager.displaySideEvents()
     eventManager.setAllEventListeners()
     populateArticleModule();
+    addArticleEventListeners();
 
 })
 
