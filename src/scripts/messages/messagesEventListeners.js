@@ -17,14 +17,19 @@ const newMessageHandler = () => {
 	const message = document.getElementById("message--new").value;
 	const timestamp = createDateTimeToISO();
 	// POST request to /messages and re-render DOM
-	API.createSomething("messages", { userId, message, timestamp }).then(() => {
-		data.buildYourOwnGet("messages?_expand=user").then((messages) => {
-			sessionStorage.setItem("messages", JSON.stringify(messages));
-			displayMessages();
-			displayMainMessages();
-			messageInput.value = ""
+	if (message === ""){
+		window.alert("Please enter a message before sending.")
+	}
+	else {
+		API.createSomething("messages", { userId, message, timestamp }).then(() => {
+			data.buildYourOwnGet("messages?_expand=user").then((messages) => {
+				sessionStorage.setItem("messages", JSON.stringify(messages));
+				displayMessages();
+				displayMainMessages();
+				messageInput.value = ""
+			});
 		});
-	});
+	};
 };
 
 const updateMessageInputfield = (event, messageObj) => {
