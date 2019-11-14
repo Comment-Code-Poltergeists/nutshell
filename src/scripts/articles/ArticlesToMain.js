@@ -15,10 +15,9 @@ articleArray.forEach(element => {
         <button class="btn btn-sm btn-warning" id="edit-article-${element.id}">✎</button>
         <button class="btn btn-sm btn-danger" id="delete-article-${element.id}">X</button>
         </span>`
+        cardRef.classList.add("bg-secondary")
     } else {
         cardRef.classList.add("csbg")
-        console.log(cardRef.classList)
-        
     }
 });
 }
