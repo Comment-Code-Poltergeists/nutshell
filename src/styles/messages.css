@@ -24,3 +24,14 @@ Author: Ryan Bishop
     width: 25%;
     margin: 0 auto;
 }
+
+.not-friend {
+    border: 1px solid cornsilk;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.not-friend:hover {
+    background-color: lightskyblue;
+    cursor: pointer;
+}
