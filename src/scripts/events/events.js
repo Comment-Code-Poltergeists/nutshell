@@ -137,6 +137,8 @@ const eventManager = {
     const modalTitle = document.querySelector("#nutshell-modal-title");
     const modalBody = document.querySelector("#nutshell-modal-body");
     const modalFooter = document.querySelector("#nutshell-modal-footer");
+    
+    document.querySelector("#mainButton").innerHTML="Add New Event"
   
     modalTitle.textContent = "Add New Event";
     modalBody.innerHTML = eventsHTML.buildNewEventForm();
