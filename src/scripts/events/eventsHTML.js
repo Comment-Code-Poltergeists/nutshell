@@ -2,7 +2,9 @@ let SideEventCounter = 0
 let mainEventCounter = 0
 
 export default {
-
+//*************************************************************************
+// Create a HTML content for the side container
+//*************************************************************************
   eventsSideContainerHtmlMaker(event) {
     if (SideEventCounter === 0) { // the next upcoming event based on the sorted array
       SideEventCounter++
@@ -15,7 +17,9 @@ export default {
       <b> ${event.location} </b>
      </div>
      </div>
-     </div>`
+     </div>
+     <br>
+     `
     } else { // not bolded entries for all the other events
       SideEventCounter++
       return `
@@ -27,15 +31,19 @@ export default {
        ${event.location}
      </div>
      </div>
-     </div>`
+     </div>
+     <br>
+     `
     }
-
   },
+//*************************************************************************
+// Create a HTML content for the MAIN container - DISPLAY
+//*************************************************************************
   eventsMainContainerHtmlMaker(event) {
     if (mainEventCounter === 0) { // the next upcoming event based on the sorted array
       mainEventCounter++
       return `
-     <div class="card bg-secondary border-dark">
+     <div class="card bg-secondary border-dark" id="event-container--${event.id}">
      <div class="card-body">
      <h6 class="card-title"><b> ${event.eventName} </b></h6>
      <div class="card-text">
@@ -49,7 +57,7 @@ export default {
     } else { // not bolded entries for all the other events
       mainEventCounter++
       return `
-      <div class="card bg-secondary border-dark"> 
+      <div class="card bg-secondary border-dark" id="event-container--${event.id}"> 
       <div class="card-body">
       <h6 class="card-title"> ${event.eventName} </h6>
       <div class="card-text">
@@ -61,6 +69,26 @@ export default {
      </div>
      </div>`
     }
-
-  }
+  },
+//*************************************************************************
+// Create a HTML content for the MAIN container - EDIT
+//*************************************************************************
+eventsMainContainerHtmlMakerEdit(eventToEdit) {
+  return `<div><fieldset>
+    <div class="form-group"
+    <label for="eventsName">Name</label>
+    <input class="form-control" id="eventName--${eventToEdit}" type="text">
+    </div>
+    <div class="form-group"
+    <label for="eventsDate">Date</label>
+    <input class="form-control" id="eventDate--${eventToEdit}" type="date">
+    </div>
+    <div class="form-group"
+    <label for="location">Location</label>
+    <input class="form-control" id="location--${eventToEdit}" type="text">
+    </div>
+  </fieldset>
+  <button class="btn btn-primary" id="save-event--${eventToEdit}"> Save </button>
+  </div>`
+}
 }
