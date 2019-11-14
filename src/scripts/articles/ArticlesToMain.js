@@ -32,7 +32,7 @@ export const populateArticlesToMain = () => {
     modalBodyRef.innerHTML = newArticleForm();
     const modalFooterRef = document.getElementById("nutshell-modal-footer")
     modalFooterRef.innerHTML = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<button type="button" class="btn btn-primary" id="saveNewArticle">Save changes</button>`
+<button type="button" class="btn btn-primary" id="saveNewArticle" data-dismiss="modal">Save changes</button>`
     document.getElementById("saveNewArticle").addEventListener("click", (event) => {
 
         console.log("save this article")
