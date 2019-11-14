@@ -12,12 +12,11 @@ import { createDateTimeToISO } from "../utilities/datetime";
 export const articlesEventListener = () => {
 document.getElementById("articles-container").addEventListener("click", () => {
     populateArticlesToMain();
-    addMainEventListener();
 })}
 
 
 //set an event listener on the main container
-export const addMainEventListener = () => {
+export const addArticleEventListeners = () => {
     const MainRef = document.getElementById("main-container");
     MainRef.addEventListener("click", (event) => {
         //logic for what happens when you click the edit button
@@ -45,6 +44,12 @@ export const addMainEventListener = () => {
             const timestamp = createDateTimeToISO()
             API.patchSomething(`articles/${id}`, {title, url, synopsis, timestamp}).then(updateDomArticles)
             
+        }
+    })
+    const bigButtonRef = document.getElementById("mainButton")
+    bigButtonRef.addEventListener("click", () => {
+        if (bigButtonRef.innerText === "New Article") {
+            console.log("lets make a new article!")
         }
     })
 }

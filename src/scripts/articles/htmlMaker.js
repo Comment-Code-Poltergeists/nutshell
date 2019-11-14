@@ -35,3 +35,22 @@ export const articleForm = (id) => {
   <button class="btn btn-primary" id="save-article-${id}"> Save </button>
   </div>`
 }
+
+  export const newArticleForm = (id) => {
+    return `<div><fieldset>
+    <div class="form-group"
+    <label for="articleTitle">Title</label>
+    <input class="form-control" id="articleTitle-${id}" type="text">
+    </div>
+    <div class="form-group"
+    <label for="articleUrl">URL</label>
+    <input class="form-control" id="articleUrl-${id}" type="text">
+    </div>
+    <div class="form-group"
+    <label for="articleSynopsis">Synopsis</label>
+    <input class="form-control" id="articleSynopsis-${id}" type="text">
+    </div>
+  </fieldset>
+  <button class="btn btn-primary" id="new-article-${id}"> Save </button>
+  </div>`
+}

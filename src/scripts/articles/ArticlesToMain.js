@@ -20,4 +20,6 @@ articleArray.forEach(element => {
         cardRef.classList.add("csbg")
     }
 });
+const bigButtonRef = document.getElementById("mainButton")
+bigButtonRef.innerText = "New Article"
 }
