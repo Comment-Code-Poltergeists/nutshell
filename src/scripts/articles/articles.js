@@ -12,10 +12,18 @@ let data = JSON.parse(sessionStorage.getItem("articles"))
 data.forEach(element => {
     const newArt = makeArticleCard(element);
     containerRef.innerHTML += newArt
+    const cardRef = document.getElementById(`articlecard-${element.id}`)
+    if (element.userId === userId) {
+        cardRef.classList.add("bg-secondary")
+    } else {
+        cardRef.classList.add("csbg")
+        
+    }
 });
 articlesEventListener();
 }
 
+//update the articles shown on the dom in both main and the articles section
 export const updateDomArticles = () => {
     const friendsList = JSON.parse(sessionStorage.getItem("friends"))
     let Url = `articles?userId=${userId}`;
@@ -28,3 +36,4 @@ export const updateDomArticles = () => {
         populateArticlesToMain();
     })
 }
+
