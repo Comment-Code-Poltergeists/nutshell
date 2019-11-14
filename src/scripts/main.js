@@ -22,10 +22,6 @@ API.fetchEverything(userId).then(yourInfo => {
     eventManager.setAllEventListeners()
     populateArticleModule();
     addArticleEventListeners();
-
+    renderTaskCard()
+    clickTaskCardListener()
 })
-
-renderTaskCard()
-clickTaskCardListener()
-
-
