@@ -12,9 +12,11 @@ import { clickTaskCardListener } from "./tasks/eventListeners.js"
 import { displayFriends } from "./friends/friends.js"
 import { addArticleEventListeners } from "./articles/eventListeners.js"
 import {addLoginButtonListener} from "./auth/eventListeners.js"
+import { renderRegisterModal } from "./auth/renderDOM.js"
 // sessionStorage.setItem("userId", "2")
 sessionStorage.clear();
 export const userId = JSON.parse(sessionStorage.getItem("userId"))
+renderRegisterModal()
 if (sessionStorage.getItem("userId") !== null) {
     
     API.fetchEverything(userId).then(yourInfo => {
@@ -30,6 +32,7 @@ if (sessionStorage.getItem("userId") !== null) {
 } else {
     $("#login-modal").modal("show")
 addLoginButtonListener();
+
 }
 
 
