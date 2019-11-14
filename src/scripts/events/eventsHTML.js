@@ -92,7 +92,7 @@ eventsMainContainerHtmlMakerEdit(eventToEdit) {
   </div>`
 },
 //*************************************************************************
-// Create a HTML content for ADD modal
+// Create a HTML content for ADD modal window
 //*************************************************************************
 buildNewEventForm(){
 return `
@@ -106,6 +106,9 @@ return `
       </div>
       `
 },
+//*************************************************************************
+// Create a BUTTONS for ADD modal window
+//*************************************************************************
 buildEventFormButtons(){
   return `
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
