@@ -11,12 +11,14 @@ import { renderTaskCard } from "./tasks/renderDOM.js"
 import { clickTaskCardListener } from "./tasks/eventListeners.js"
 import { displayFriends } from "./friends/friends.js"
 import { addArticleEventListeners } from "./articles/eventListeners.js"
+import { renderRegisterModal } from "./auth/renderDOM.js"
 // sessionStorage.setItem("userId", "2")
 sessionStorage.clear();
 export const userId = JSON.parse(sessionStorage.getItem("userId"))
 
 
 API.fetchEverything(userId).then(yourInfo => {
+    renderRegisterModal()
     displayMessages()
     displayFriends()
     eventManager.displaySideEvents()

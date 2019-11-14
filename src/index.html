@@ -25,64 +25,12 @@
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
       <li class="nav-item ">
-        <button type="button" class="nav-item btn btn-primary login" data-toggle="modal" data-target="#login-modal" id="loginButton">Login</button>
+        <button type="button" class="nav-item btn btn-primary logout" id="logoutButton">Logout</button>
       </li>
     </ul>
 
-    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="register-modal-title">Register</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" id="register-modal-body">
-            <div class="card-body">
-              <label for="register-name--new">Username:</label>
-              <input id="register-name--new" type="text" class="form-control" value="">
-              <label for="register-pw--new">Password:</label>
-              <input id="register-pw--new" type="password" class="form-control" value="">
-              <label for="confirm-pw--new">Confirm Password:</label>
-              <input id="confirm-pw--new" type="password" class="form-control" value="">
-            </div>
-          </div>
-          <div class="modal-footer" id="nutshell-modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Register</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="login-modal-title">Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" id="login-modal-body">
-            <div class="card-body">
-              <label for="login-name--new">Username:</label>
-              <input id="login-name--new" type="text" class="form-control" value="">
-              <label for="login-pw--new">Password:</label>
-              <input id="login-pw--new" type="password" class="form-control" value="">
-            </div>
-          </div>
-          <div class="modal-footer" id="nutshell-modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="nav-item btn btn-primary register" data-toggle="modal"
-            data-target="#register-modal" id="loginButton" data-dismiss="modal">Register</button>
-            <button type="button" class="btn btn-primary">Login</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="login-container"></div>
+
     <div class="row" id="components-container">
       <div class="col-lg-3">
         <div id="events-container" class="card side-components">
