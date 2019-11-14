@@ -7,26 +7,29 @@ import { createDateTimeToISO } from "../utilities/datetime.js";
 import { displayMessages, displayMainMessages } from "./messages.js";
 import data from "../data/data.js";
 import { refreshFriendsDisplay } from "../friends/friendsDisplay.js"
+import messagesHtmlFactory from "./messagesHtmlFactory.js";
 
 //get logged-in user
 const userId = JSON.parse(sessionStorage.getItem("userId"));
 
 const newMessageHandler = () => {
-	const message = document.getElementById("new-message").value;
+	console.log("sending new message")
+	const message = document.getElementById("message--new").value;
+	console.log("message", message)
 	const timestamp = createDateTimeToISO();
 	console.log("messageObj", { userId, message, timestamp });
-	// TODO: POST request to database.json /messages and re-render DOM
-	API.createSomething("messages", { userId, message, timestamp }).then(displayMessages);
+	// POST request to /messages and re-render DOM
+	API.createSomething("messages", { userId, message, timestamp }).then(() => {
+		data.buildYourOwnGet("messages?_expand=user").then((messages) => {
+			sessionStorage.setItem("messages", JSON.stringify(messages));
+			displayMessages();
+			displayMainMessages();
+		});
+	});
 };
 
 const updateMessageInputfield = (event, messageObj) => {
 	const messageContainer = document.getElementById(`main-message--${messageObj.id}`);
-	// const inputField = document.createElement("input")
-	// inputField.id = `edited-message--${messageObj.id}`
-	// inputField.type = "text"
-	// const saveButton = document.createElement("button")
-	// saveButton.id = `update-message--${messageObj.id}`
-	// saveButton.class = "btn"
 	const inputForm = `
     <input type="text" id="edited-message--${messageObj.id}"></br>
     <button id="update-message--${messageObj.id}" class="btn btn-primary">SAVE</button>
@@ -70,10 +73,15 @@ const prevMessageButtonHandler = () => {
 };
 
 const messageContainerClickHandler = () => {
-	console.log("clicked the messages container");
 	displayMainMessages();
-	const mainContainer = document.getElementById("main-container");
-	console.log(mainContainer);
+	// const actionButton = document.getElementById("nutshell-modal-title")
+	const buttonModalTitle = document.getElementById("nutshell-modal-title")
+	buttonModalTitle.textContent = "New Message"
+	const buttonModalBody = document.getElementById("nutshell-modal-body")
+	buttonModalBody.innerHTML = messagesHtmlFactory.buildNewMessageForm()
+	const buttonModalButtons = document.getElementById("nutshell-modal-footer")
+	buttonModalButtons.innerHTML = messagesHtmlFactory.buildMessageFormButtons()
+	document.getElementById("new-message-save").addEventListener("click", newMessageHandler)
 };
 
 export function attachMessagesEvents() {
@@ -84,7 +92,7 @@ export function attachMessagesEvents() {
 	document.querySelectorAll(".not-friend").forEach(friend => {
 		friend.addEventListener("click", () => {
 			const friendId = event.target.id.split("--")[1]
-			//TODO: add friend using userId
+			//add friend using userId
 			if (window.confirm("Would you like to add this person as a friend?")){
 				data.createSomething("friends", {"userId": parseInt(friendId), "loggedInUser": userId})
 				.then(r => {
