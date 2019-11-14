@@ -1,4 +1,4 @@
-import { renderTaskCard, renderTaskMain } from "./renderDOM.js";
+import { renderTaskCard, renderTaskMain, renderTaskForm } from "./renderDOM.js";
 import API from "../data/data.js";
 
 const cacheAndRenderTasks = () => {
@@ -31,6 +31,20 @@ export const isCompleteTaskListener = () => {
       API.patchSomething(`tasks/${taskId}`, body).then(cacheAndRenderTasks);
     } else if (taskAction === "delete-task") {
       API.deleteSomething(`tasks/${taskId}`).then(cacheAndRenderTasks);
+    } else if (taskAction === "edit-task") {
+      renderTaskForm(taskId);
+    } else if (taskAction === "save-task") {
+      const editedTaskName = document.querySelector(`#task-name--${taskId}`)
+        .value;
+      const editedTaskDate = document.querySelector(`#task-date--${taskId}`)
+        .value;
+      const editedTask = {
+        task: editedTaskName,
+        expectedCompletionDate: editedTaskDate
+      };
+      API.patchSomething(`tasks/${taskId}`, editedTask).then(cacheAndRenderTasks)
+    } else if (taskAction === "cancel-task") {
+      cacheAndRenderTasks()
     }
   });
 };
