@@ -37,7 +37,7 @@ export default {
 
   },
 
-  buildTaskForm: function(task) {
+  buildEditTaskForm: function(task) {
 
     if(task !== undefined) {
       // const taskMainReference = document.querySelector(`#main-task--${task.id}`)
@@ -55,8 +55,25 @@ export default {
 
     return editTaskMainHTML;
 
-    } else {
-      // populate clear form
     }
+  },
+
+  buildNewTaskForm: function() {
+      const newTaskForm = `
+      <div class="card-body">
+        <label for="task-name--new">Task name:</label>
+        <input id="task-name--new" type="text" class="form-control" value="">
+        <label for="task-date--new">To be completed by:</label>
+        <input id="task-date--new" type="date" class="form-control" value="">
+      </div>
+      `
+
+    return newTaskForm
+  },
+
+  buildTaskFormButtons: function() {
+    return `
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" id="new-task-save" class="btn btn-primary">Save changes</button>`
   }
 };
