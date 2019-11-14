@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./styles/articles.css">
+
+  <link rel="stylesheet" href="styles/articles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/main.css">
-    
+  <link rel="stylesheet" href="./styles/main.css">
   <title>Nutshell</title>
 </head>
 
@@ -37,59 +37,89 @@
 
         <div id="articles-container" class="card side-components">
           <h3>Articles</h3>
-            <article id="articles-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="articles-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
         </div>
         <div id="tasks-container" class="card side-components">
           <h3>To Do</h3>
-            <article id="tasks-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="tasks-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
         </div>
       </div>
 
       <div id="main-container" class="col-lg-6 main">
         <h3>Main</h3>
-          <article id="main-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+        <article id="main-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
       </div>
 
 
       <div class="col-lg-3">
         <div id="friends-container" class="card side-components">
           <h3>Friends</h3>
-            <article id="friends-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="friends-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
         </div>
         <div id="messages-container" class="card side-components">
           <h3>Messages</h3>
-            <article id="messages-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
+          <article id="messages-content" class="card-body overflow-auto"> Lorem Ipsumn</article>
         </div>
         <div id="ads-container" class="card side-components">
           <h3>Your Ad Here</h3>
-            <article id="ads-content" class="card-body overflow-auto"> 
-                <div class="card bg-secondary border-dark">
-                    <div class="card-body">
-                   <h6 class="card-title"> BUY DIET PILLS </h6>
-                   <div class="card-text">
-                     Only $9.99
-                    </div>
-                   </div>
-                   </div>
-                   <br>
-                   <div class="card bg-secondary border-dark">
-                      <div class="card-body">
-                     <h6 class="card-title"> MAKE MONEY ONLINE </h6>
-                     <div class="card-text">
-                       Ask me how!
-                      </div>
-                     </div>
-                     </div>
-                     <br>
-            </article>
+          <article id="ads-content" class="card-body overflow-auto">
+            <div class="card bg-secondary border-dark">
+              <div class="card-body">
+                <h6 class="card-title"> BUY DIET PILLS </h6>
+                <div class="card-text">
+                  Only $9.99
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="card bg-secondary border-dark">
+              <div class="card-body">
+                <h6 class="card-title"> MAKE MONEY ONLINE </h6>
+                <div class="card-text">
+                  Ask me how!
+                </div>
+              </div>
+            </div>
+            <br>
+          </article>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="nutshell-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nutshell-modal-title">Nutshell Action</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="nutshell-modal-body">
+            Select a card to create content.
+          </div>
+          <div class="modal-footer" id="nutshell-modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="nav footer text-muted align-items-center">
-      <a href="#" class="nav-item btn btn-primary action" id="mainButton">Action</a>
+      <button type="button" class="nav-item btn btn-primary action" data-toggle="modal"
+        data-target="#nutshell-modal" id="mainButton">Action</button>
     </div>
   </div>
-
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

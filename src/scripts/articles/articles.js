@@ -36,3 +36,4 @@ export const updateDomArticles = () => {
         populateArticlesToMain();
     })
 }
+

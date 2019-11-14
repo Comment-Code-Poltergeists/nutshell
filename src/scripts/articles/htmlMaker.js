@@ -36,21 +36,20 @@ export const articleForm = (id) => {
   </div>`
 }
 
-  export const newArticleForm = (id) => {
+  export const newArticleForm = () => {
     return `<div><fieldset>
     <div class="form-group"
     <label for="articleTitle">Title</label>
-    <input class="form-control" id="articleTitle-${id}" type="text">
+    <input class="form-control" id="newArticleTitle" type="text">
     </div>
     <div class="form-group"
     <label for="articleUrl">URL</label>
-    <input class="form-control" id="articleUrl-${id}" type="text">
+    <input class="form-control" id="newArticleUrl" type="text">
     </div>
     <div class="form-group"
     <label for="articleSynopsis">Synopsis</label>
-    <input class="form-control" id="articleSynopsis-${id}" type="text">
+    <input class="form-control" id="newArticleSynopsis" type="text">
     </div>
   </fieldset>
-  <button class="btn btn-primary" id="new-article-${id}"> Save </button>
   </div>`
 }

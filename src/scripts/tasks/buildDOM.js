@@ -15,7 +15,7 @@ export default {
   },
   buildTaskMain: function(taskEntry) {
     const mainSection = document.createElement("section")
-    mainSection.id = `card-task--${taskEntry.id}`
+    mainSection.id = `main-task--${taskEntry.id}`
     mainSection.classList = "card bg-secondary border-dark"
     
     mainSection.innerHTML = `
@@ -35,5 +35,28 @@ export default {
 
     return mainSection
 
+  },
+
+  buildTaskForm: function(task) {
+
+    if(task !== undefined) {
+      // const taskMainReference = document.querySelector(`#main-task--${task.id}`)
+      // populate form with details
+      const editTaskMainHTML = `
+      <div class="card-body">
+      <span class="task-buttons">
+        <button type="button" id="save-task--${task.id}" class="btn btn-sm btn-primary">&#128190;</button>
+        <button type="button" id="cancel-task--${task.id}" class="btn btn-sm btn-light">Cancel</button>
+      </span>
+      <input id="task-name--${task.id}" type="text" class="form-control" value="${task.task}">
+      <input id="task-date--${task.id}" type="date" class="form-control" value="${task.expectedCompletionDate}">
+    </div>
+    `
+
+    return editTaskMainHTML;
+
+    } else {
+      // populate clear form
+    }
   }
 };
