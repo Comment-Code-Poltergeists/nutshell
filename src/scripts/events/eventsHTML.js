@@ -81,7 +81,7 @@ eventsMainContainerHtmlMakerEdit(eventToEdit) {
     </div>
     <div class="form-group"
     <label for="eventsDate">Date</label>
-    <input class="form-control" id="eventDate--${eventToEdit}" type="text">
+    <input class="form-control" id="eventDate--${eventToEdit}" type="date">
     </div>
     <div class="form-group"
     <label for="location">Location</label>

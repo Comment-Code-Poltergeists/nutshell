@@ -106,8 +106,10 @@ const eventManager = {
        
         let eventContainerForEdit = `event-container--${eventToEdit}`
 
+        // Rendering the EDIT form
         document.getElementById(eventContainerForEdit).innerHTML = eventsHTML.eventsMainContainerHtmlMakerEdit(eventToEdit)
-
+        
+        // Populating the form
         data.buildYourOwnGet(`events/${eventToEdit}`).then((eventsObj) => {
           console.log(eventsObj)
           document.getElementById(`eventName--${eventToEdit}`).value = eventsObj.eventName
@@ -115,12 +117,18 @@ const eventManager = {
           document.getElementById(`location--${eventToEdit}`).value = eventsObj.location
           
           console.log(eventsObj.eventName, eventsObj.eventDate, eventsObj.location)
-        }
+        })
+          // Saving the new content
+        document.getElementById(`event-container--${eventToEdit}`).addEventListener("click", function (){
+          if (event.target.id.startsWith("save-event")) {
+            const eventToSave = event.target.id.split("--")[1]
+            let eventToSaveName = document.getElementById(`eventName--${eventToEdit}`).value
+            let eventToSaveDate = document.getElementById(`eventDate--${eventToEdit}`).value
+            let eventToSaveLocation = document.getElementById(`location--${eventToEdit}`).value
 
-        // let eventNameToEdit = document.getElementById(`eventName--${eventToEdit}`).value
-
-        // data.patchSomething(`events/${eventToEdit}`, {eventName, eventDate, location}).then(eventManager.updateDomEvents)
-        
+            data.patchSomething(`events/${eventToSave}`, {"eventName": eventToSaveName, "eventDate":  eventToSaveDate, "location": eventToSaveLocation}).then(eventManager.updateDomEvents)
+          }
+        })
       }
     })
   },
