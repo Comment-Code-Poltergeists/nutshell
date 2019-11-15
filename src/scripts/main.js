@@ -16,7 +16,7 @@ import { renderRegisterModal } from "./auth/renderDOM.js"
 // sessionStorage.setItem("userId", "2")
 
 export const getDataAndShowEverything = () => {
-    API.fetchEverything(userId).then(() => {
+    return API.fetchEverything(userId).then(() => {
         displayMessages()
         displayFriends()
         eventManager.displaySideEvents()

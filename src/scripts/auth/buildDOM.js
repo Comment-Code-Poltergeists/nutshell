@@ -38,7 +38,7 @@ export const buildLoginHTML = () => {
   </div>
   <div class="modal-body" id="login-modal-body">
   <div class="card-body">
-  <label for="login-name--new">Username:</label>
+  <label for="login-name--new">Email:</label>
   <input id="login-name--new" type="text" class="form-control" value="">
   <label for="login-pw--new">Password:</label>
   <input id="login-pw--new" type="password" class="form-control" value="">
