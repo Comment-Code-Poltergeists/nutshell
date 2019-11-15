@@ -47,6 +47,11 @@
   border-radius: .25rem;
 }
 
+.newFriend:hover {
+  background-color: lightskyblue;
+  cursor: pointer;
+}
+
 .friend-inline-el {
   white-space: nowrap;
   overflow: hidden;

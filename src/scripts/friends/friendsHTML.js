@@ -28,7 +28,7 @@ export const buildMainFriendHTML = friendObj => {
 
 export const buildFindUsersHTML = userObj => {
     return `
-    <div id="find-user-event--${userObj.id}" class="friend-card">
+    <div id="find-user-event--${userObj.id}" class="friend-card newFriend">
         <div id="find-user-event--${userObj.id}" class="friend-inline-el">${userObj.fullName}</div>
         <div id="find-user-event--${userObj.id}" class="friend-inline-el">${userObj.email}</div>
     </div>
