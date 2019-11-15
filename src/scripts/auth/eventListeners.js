@@ -29,7 +29,7 @@ export const addRegisterButtonListener = () => {
         const email = document.getElementById("register-email--new").value
         const password = document.getElementById("register-pw--new").value
         const confirmPassword = document.getElementById("confirm-pw--new").value
-        const name = document.getElementById("register-name--new").value
+        const fullName = document.getElementById("register-name--new").value
         
         API.buildYourOwnGet(`users?email=${email}`).then((userObj) => {
             if (userObj.length === 1) {
@@ -37,11 +37,11 @@ export const addRegisterButtonListener = () => {
             } else {
                 if (password !== confirmPassword) {
                     window.alert("Those passwords do not match!!")
-                } if (name === "") {
+                } if (fullName === "") {
                     window.alert("You must enter your name!!")
                 } else {
                     console.log("register")
-                    API.createSomething("users", {name, email, password}).then((data) => {
+                    API.createSomething("users", {fullName, email, password}).then((data) => {
                         console.log(data)
                         sessionStorage.setItem("userId", JSON.stringify(data.id))
                         getDataAndShowEverything();
