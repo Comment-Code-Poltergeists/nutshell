@@ -1,5 +1,11 @@
+/*
+Purpose: Contains functions used to populate the dom
+Author: Chase Fite
+ */
+
 import { buildSideFriendHTML, buildMainFriendHTML } from "./friendsHTML.js"
-import { removeFriendFunctionality } from "./eventListeners.js"
+import { removeFriendFunctionality } from "./friendsEventListeners.js"
+import { buildFindUsersHTML } from "./friendsHTML.js"
 
 // displays friend cards in side container
 export const displaySideFriendsList = friendsArray => {
@@ -26,6 +32,19 @@ export const displayMainFriendsList = friendsArray => {
     // add scroll bar functionality
     const friendsContentMain = document.getElementById("main-container")
     friendsContentMain.scrollTop = friendsContentMain.scrollHeight
+}
+
+// displays a list of users to the main container that are not currently on our
+// friends list if any part of the search is included in their name or email
+export const displayFindUsersMain = (usersArray, friendUserIdList) => {
+    const search = document.querySelector("#searchInput")
+    usersArray.forEach(user => {
+        if (!friendUserIdList.includes(user.id)) {
+            if(user.fullName.includes(search.value) || user.email.includes(search.value)) {
+                document.querySelector("#main-container").innerHTML += buildFindUsersHTML(user)
+            }
+        }
+    })
 }
 
 export const refreshFriendsDisplay = friendsList => {
