@@ -4,12 +4,15 @@ import { userId } from "../main";
 import { createDateTimeToISO } from "../utilities/datetime";
 import API from "../data/data.js"
 import { updateDomArticles } from "./articles";
+import {sortElementsByDate} from "../utilities/datetime.js"
 
 export const populateArticlesToMain = () => {
     const mainRef = document.getElementById("main-container")
     mainRef.innerHTML = "<h2>Articles</h2>"
     const articleArray = JSON.parse(sessionStorage.getItem("articles"))
-    articleArray.forEach(element => {
+    //sort articles by date
+    const sortedArticleArray = sortElementsByDate(articleArray, "timestamp").reverse()
+    sortedArticleArray.forEach(element => {
         const newArt = makeArticleCardMain(element);
         mainRef.innerHTML += newArt;
         const cardRef = document.getElementById(`articleCard-${element.id}`)
@@ -32,7 +35,7 @@ export const populateArticlesToMain = () => {
     modalBodyRef.innerHTML = newArticleForm();
     const modalFooterRef = document.getElementById("nutshell-modal-footer")
     modalFooterRef.innerHTML = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<button type="button" class="btn btn-primary" id="saveNewArticle">Save changes</button>`
+<button type="button" class="btn btn-primary" id="saveNewArticle" data-dismiss="modal">Save changes</button>`
     document.getElementById("saveNewArticle").addEventListener("click", (event) => {
 
         console.log("save this article")
