@@ -1,8 +1,8 @@
 import eventsHTML from "./eventsHTML.js"
 import { sortElementsByDate } from "../utilities/datetime.js"
 import data from "../data/data.js"
-import { userId } from "../main";
 
+import { userId } from "../main";
 
 const eventContainer = document.getElementById("events-content")
 const mainContainerRef = document.getElementById("main-container")
@@ -22,15 +22,17 @@ const eventManager = {
   // Show the events in the SIDE container
   //*************************************************************************
   displaySideEvents() {
-    console.log("GET events")
     eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
 
     let sortedEventsArray = sortElementsByDate(eventsArray, "eventDate")
     let HtmlForAllEvents = ""
 
     sortedEventsArray.forEach(event => {
-      const eventHtml = eventsHTML.eventsSideContainerHtmlMaker(event)
-      HtmlForAllEvents += eventHtml
+  
+        const eventHtml = eventsHTML.eventsSideContainerHtmlMaker(event, "YES")
+        HtmlForAllEvents += eventHtml
+      
+ 
     })
     eventContainer.innerHTML = HtmlForAllEvents
   },
@@ -38,6 +40,7 @@ const eventManager = {
   // Show the events in the MAIN container
   //*************************************************************************
   displayMainEvents() {
+
     eventsMainContainerRef.addEventListener("click", function () {
       console.log("DISPLAY events")
       eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
@@ -46,7 +49,8 @@ const eventManager = {
 
       let HtmlForAllEvents = ""
       sortedEventsArray.forEach(event => {
-        const eventHtml = eventsHTML.eventsMainContainerHtmlMaker(event)
+       
+        const eventHtml = eventsHTML.eventsMainContainerHtmlMaker(event, )
         HtmlForAllEvents += eventHtml
       })
       mainContainerRef.innerHTML = "<h1>All Events</h1>"
@@ -77,11 +81,14 @@ const eventManager = {
   // DELETE an event
   //*************************************************************************
   deleteOrEditAnEvent() {
+
+    sessionStorage.setItem("eventsCounterReset", true) //<----------------------------------------------
+
+
     document.getElementById("main-container").addEventListener("click", function (e) {
       console.log(e.target.id)
       if (event.target.id.startsWith("delete-event")) {
         const eventToDelete = event.target.id.split("--")[1]
-        console.log(`Please delete event number:  ${eventToDelete}`)
         data.deleteSomething(`events/${eventToDelete}`)
         data.fetchEverything(userId)
           .then(() => {
@@ -91,8 +98,11 @@ const eventManager = {
   // EDIT an event
   //*************************************************************************
       } else if (event.target.id.startsWith("edit-event")) {
+
+        sessionStorage.setItem("eventsCounterReset", true) //<----------------------------------------------
+
+
         const eventToEdit = event.target.id.split("--")[1]
-        console.log(`Please edit event number:  ${eventToEdit}`)
        
         let eventContainerForEdit = `event-container--${eventToEdit}`
 
@@ -106,7 +116,6 @@ const eventManager = {
           document.getElementById(`eventDate--${eventToEdit}`).value = eventsObj.eventDate
           document.getElementById(`location--${eventToEdit}`).value = eventsObj.location
           
-          console.log(eventsObj.eventName, eventsObj.eventDate, eventsObj.location)
         })
           // Saving the new content
         document.getElementById(`event-container--${eventToEdit}`).addEventListener("click", function (){
@@ -128,6 +137,8 @@ const eventManager = {
   // SAVE/ADD a new event
   //*************************************************************************
   saveNewEvent(){
+
+    sessionStorage.setItem("eventsCounterReset", true) //<----------------------------------------------
 
     const modalTitle = document.querySelector("#nutshell-modal-title");
     const modalBody = document.querySelector("#nutshell-modal-body");
@@ -185,7 +196,7 @@ const eventManager = {
     data.buildYourOwnGet(Url).then((eventsArray) => {
       sessionStorage.setItem("events", JSON.stringify(eventsArray));
 
-      eventManager.displaySideEvents();
+      eventManager.displaySideEvents("YES");
       eventManager.refreshMainEvents();
       window.scrollTo(0,0)
     })
