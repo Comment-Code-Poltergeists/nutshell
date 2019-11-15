@@ -48,10 +48,14 @@ export default {
 //*************************************************************************
   eventsMainContainerHtmlMaker(event) {
     let cardClasses
+    let buttonGroup
     if (event.userId !== userId) {
       cardClasses = "card border-dark csbg"
+      buttonGroup = ""
     } else {
       cardClasses = "card bg-secondary border-dark"
+      buttonGroup = `<button type="button" id="delete-event--${event.id}" class="btn btn-sm btn-danger">X</button>
+      <button type="button" id="edit-event--${event.id}" class="btn btn-sm btn-warning">✎</button>`
     }
     if (mainEventCounter === 0) { // the next upcoming event based on the sorted array
       mainEventCounter++
@@ -63,8 +67,7 @@ export default {
       <b> ${event.eventDate}</b>
       <b> ${event.location} </b>
      </div>
-     <button type="button" id="delete-event--${event.id}" class="btn btn-sm btn-danger">X</button>
-     <button type="button" id="edit-event--${event.id}" class="btn btn-sm btn-warning">✎</button>
+     ${buttonGroup}
      </div>
      </div>`
     } else { // not bolded entries for all the other events
@@ -77,8 +80,7 @@ export default {
        ${event.eventDate}
        ${event.location}
      </div>
-     <button type="button" id="delete-event--${event.id}" class="btn btn-sm btn-danger">X</button>
-     <button type="button" id="edit-event--${event.id}" class="btn btn-sm btn-warning">✎</button>
+     ${buttonGroup}
      </div>
      </div>`
     }
