@@ -15,6 +15,7 @@ export const addLoginButtonListener = () => {
                     $("#login-modal").modal("hide")
                     sessionStorage.setItem("userId", JSON.stringify(userObj[0].id))
                     getDataAndShowEverything();
+                    location.reload()
                 }
             }
         })
@@ -41,9 +42,17 @@ export const addRegisterButtonListener = () => {
                         sessionStorage.setItem("userId", JSON.stringify(data.id))
                         getDataAndShowEverything();
                         $("#register-modal").modal("hide")
+                        location.reload();
                     })
                 }
             }
         })
+    })
+}
+
+export const addLogoutListener = () => {
+    document.getElementById("logoutButton").addEventListener("click", () => {
+        sessionStorage.clear();
+        location.reload();
     })
 }
