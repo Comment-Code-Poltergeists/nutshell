@@ -19,9 +19,9 @@ API.fetchEverything(userId).then(yourInfo => {
     displayMessages()
     displayFriends()
     populateArticleModule();
+    addArticleEventListeners();
     eventManager.displaySideEvents()
     eventManager.setAllEventListeners()
-    addArticleEventListeners();
     renderTaskCard()
     clickTaskCardListener()
 })

@@ -24,9 +24,10 @@ export const populateArticleModule = () => {
         });
     } else {
         console.log("nothing in session storage!")
-        API.buildYourOwnGet("friends?_embed=userId").then((friendsList) => {
+        API.buildYourOwnGet(`friends?loggedInUser=${userId}_embed=userId`).then((friendsList) => {
             let Url = `articles?userId=${userId}`;
             friendsList.forEach(element => {
+                console.log(element)
                 Url += `&userId=${element.user.id}`
             });
             API.buildYourOwnGet(Url).then((articlesArray) => {
@@ -42,9 +43,9 @@ export const populateArticleModule = () => {
                     }
                 })
             })
-            articlesEventListener()
         })
     }
+    articlesEventListener()
 }
 
 //update the articles shown on the dom in both main and the articles section
