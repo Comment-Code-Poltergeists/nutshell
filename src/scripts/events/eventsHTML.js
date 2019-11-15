@@ -1,7 +1,4 @@
 import { sortElementsByDate } from "../utilities/datetime.js"
-
-let SideEventCounter = 0
-let mainEventCounter = 0
 const userId = JSON.parse(sessionStorage.getItem("userId"))
 export default {
 //*************************************************************************
@@ -69,7 +66,7 @@ export default {
     
     let cardClasses
     let buttonGroup
-    
+
     if (event.userId !== userId) {
       cardClasses = "card border-dark csbg"
       buttonGroup = ""
