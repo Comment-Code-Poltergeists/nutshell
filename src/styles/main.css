@@ -68,8 +68,8 @@
 }
 
 body {
-  font-family: fantasy;
-  
+  font-family: fantasy, Arial, Helvetica, sans-serif;
+
 #searchInputTitle {
   color: #007bff;
   margin-right: 5px;
