@@ -37,8 +37,6 @@ export const populateArticlesToMain = () => {
     modalFooterRef.innerHTML = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 <button type="button" class="btn btn-primary" id="saveNewArticle" data-dismiss="modal">Save changes</button>`
     document.getElementById("saveNewArticle").addEventListener("click", (event) => {
-
-        console.log("save this article")
         const usersId = userId
         const url = document.getElementById("newArticleUrl").value
         const title = document.getElementById("newArticleTitle").value
