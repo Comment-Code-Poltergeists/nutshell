@@ -1,11 +1,24 @@
+sessionStorage.setItem("eventsCounterReset", false)
+
+const eventsCounterResetStatus = window.sessionStorage.getItem("eventsCounterReset")
+
+console.log(eventsCounterResetStatus)
+
 let SideEventCounter = 0
 let mainEventCounter = 0
+
 
 export default {
 //*************************************************************************
 // Create a HTML content for the side container
 //*************************************************************************
   eventsSideContainerHtmlMaker(event) {
+    
+    if (eventsCounterResetStatus){   // checking if there is a rdequest to reset the counter
+      sessionStorage.setItem("eventsCounterReset", false)
+      SideEventCounter = 0
+    }
+
     if (SideEventCounter === 0) { // the next upcoming event based on the sorted array
       SideEventCounter++
       return `
