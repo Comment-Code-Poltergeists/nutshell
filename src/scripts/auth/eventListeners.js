@@ -5,7 +5,6 @@ export const addLoginButtonListener = () => {
     document.getElementById("loginButton").addEventListener("click", () => {
         const enteredEmail = document.getElementById("login-name--new").value
         const enteredPassword = document.getElementById("login-pw--new").value
-        console.log("pulled values", enteredEmail, enteredPassword)
         API.buildYourOwnGet(`users?email=${enteredEmail}`).then((userObj) => {
             if (userObj.length === 0) {
                 window.alert("That email does not match any current user.")
@@ -13,9 +12,7 @@ export const addLoginButtonListener = () => {
                 if (enteredPassword !== userObj[0].password) {
                     window.alert("That password does match your email!")
                 } else {
-                    console.log("login")
                     $("#login-modal").modal("hide")
-                    console.log(userObj[0].id)
                     sessionStorage.setItem("userId", JSON.stringify(userObj[0].id))
                     getDataAndShowEverything();
                 }
@@ -40,9 +37,7 @@ export const addRegisterButtonListener = () => {
                 } if (fullName === "") {
                     window.alert("You must enter your name!!")
                 } else {
-                    console.log("register")
                     API.createSomething("users", {fullName, email, password}).then((data) => {
-                        console.log(data)
                         sessionStorage.setItem("userId", JSON.stringify(data.id))
                         getDataAndShowEverything();
                         $("#register-modal").modal("hide")
