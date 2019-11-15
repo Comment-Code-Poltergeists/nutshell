@@ -8,7 +8,9 @@ export const buildRegisterHTML = () => {
   </div>
   <div class="modal-body" id="register-modal-body">
   <div class="card-body">
-  <label for="register-name--new">Username:</label>
+  <label for="register-email--new">Email:</label>
+  <input id="register-email--new" type="text" class="form-control" value="">
+  <label for="register-name--new">Full Name:</label>
   <input id="register-name--new" type="text" class="form-control" value="">
   <label for="register-pw--new">Password:</label>
   <input id="register-pw--new" type="password" class="form-control" value="">
@@ -17,8 +19,8 @@ export const buildRegisterHTML = () => {
   </div>
   </div>
   <div class="modal-footer" id="register-modal-footer">
-  <button type="button" class="nav-item btn btn-light register" data-toggle="modal" data-target="#login-modal" id="loginButton" data-dismiss="modal">Login</button>
-  <button type="button" class="btn btn-primary">Register</button>
+  <button type="button" class="nav-item btn btn-light register" data-toggle="modal" data-target="#login-modal" id="switchToLogin" data-dismiss="modal">Login</button>
+  <button type="button" class="btn btn-primary" id="registerButton">Register</button>
   </div>
   </div>
   </div>
@@ -43,8 +45,8 @@ export const buildLoginHTML = () => {
   </div>
   </div>
   <div class="modal-footer" id="login-modal-footer">
-  <button type="button" class="nav-item btn btn-light register" data-toggle="modal" data-target="#register-modal" id="registerButton" data-dismiss="modal">Register</button>
-  <button type="button" class="btn btn-primary">Login</button>
+  <button type="button" class="nav-item btn btn-light register" data-toggle="modal" data-target="#register-modal" id="switchToRegister" data-dismiss="modal">Register</button>
+  <button type="button" class="btn btn-primary" id="loginButton">Login</button>
   </div>
   </div>
   </div>

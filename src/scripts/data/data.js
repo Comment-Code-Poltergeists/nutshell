@@ -77,7 +77,7 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newObj)
-        })
+        }).then((returnData => returnData.json()))
     }
 
 
