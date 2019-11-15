@@ -15,6 +15,9 @@ export const renderTaskCard = () => {
 };
 
 export const renderTaskMain = () => {
+  const actionButton = document.querySelector("#mainButton");
+  actionButton.textContent = "New Task";
+  
   const tasks = JSON.parse(sessionStorage.getItem("tasks"));
   const mainContent = document.querySelector("#main-container");
   const sortedTasks = sortElementsByDate(tasks, "expectedCompletionDate");
@@ -50,4 +53,4 @@ export const renderNewTaskForm = () => {
   modalTitle.textContent = "Add new task";
   modalBody.innerHTML = buildDOM.buildNewTaskForm();
   modalFooter.innerHTML = buildDOM.buildTaskFormButtons();
-}
+};
