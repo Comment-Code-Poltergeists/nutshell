@@ -25,15 +25,15 @@ export default {
                     fetchEventsUrl += `&userId=${id}`
                 })
                 //fetch your friends articles and yours
-                fetch(fetchArticlesUrl).then(data => data.json())
+                return fetch(fetchArticlesUrl).then(data => data.json())
                     .then(articlesArray => {
                         //fetch your friends events and yours
-                        fetch(fetchEventsUrl)
+                        return fetch(fetchEventsUrl)
                             .then(data => data.json())
                             .then(eventsArray => {
-                                fetch(`${baseUrl}/messages?_expand=user`).then(data => data.json())
+                                return fetch(`${baseUrl}/messages?_expand=user`).then(data => data.json())
                                     .then(messagesArray => {
-                                        fetch(`${baseUrl}/tasks/?userId=${userId}`).then(data => data.json())
+                                        return fetch(`${baseUrl}/tasks/?userId=${userId}`).then(data => data.json())
                                         //save everything to session storage
                                             .then(tasksArray => {
                                                 sessionStorage.setItem("friends", JSON.stringify(friendObjs));
@@ -77,7 +77,7 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newObj)
-        })
+        }).then((returnData => returnData.json()))
     }
 
 

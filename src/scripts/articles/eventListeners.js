@@ -46,11 +46,5 @@ export const addArticleEventListeners = () => {
             
         }
     })
-    // const bigButtonRef = document.getElementById("mainButton")
-    // bigButtonRef.addEventListener("click", () => {
-    //     if (bigButtonRef.innerText === "New Article") {
-    //         console.log("lets make a new article!")
-    //     }
-    // })
 }
 
