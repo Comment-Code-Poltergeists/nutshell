@@ -4,7 +4,7 @@ Author: Chase Fite
  */
 
 import { displaySideFriendsList } from "./friendsDisplay.js"
-import { clickFriendsSideContainer, addSearchFunction } from "./friendsEventListeners.js/index.js"
+import { clickFriendsSideContainer, addSearchFunction } from "./friendsEventListeners.js"
 
 // container for all "friends" functionality
 export const displayFriends = () => {
