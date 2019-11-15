@@ -53,6 +53,7 @@ export const populateArticlesToMain = () => {
         } else {
             API.createSomething("articles", { "userId": usersId, url, title, synopsis, timestamp }).then(() => {
                 updateDomArticles();
+                $("#nutshell-modal").modal("hide")
             })
         }
 
