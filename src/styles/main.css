@@ -38,6 +38,7 @@
   max-width: 1000px !important;
 }
 
+/* styling for the friends section */
 .friend-card {
   border: solid black 1px;
   padding: 2px;
@@ -57,4 +58,9 @@
   top: -4.5px;
   left: 2px;
   float: right;
+}
+
+#searchInputTitle {
+  color: #007bff;
+  margin-right: 5px;
 }

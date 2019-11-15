@@ -1,3 +1,8 @@
+/*
+Purpose: Contains functions that build html elements for the dom
+Author: Chase Fite
+ */
+
 // build individual friend card for side container
 export const buildSideFriendHTML = friendObj => {
     return `
@@ -17,6 +22,15 @@ export const buildMainFriendHTML = friendObj => {
             <span class="friend-inline-el">${friendObj.user.email}</span>
             <button id="removeButton-${friendObj.id}" class="remove-button btn btn-sm btn-danger">X</button>
         </div>
+    </div>
+    `
+}
+
+export const buildFindUsersHTML = userObj => {
+    return `
+    <div id="find-user-event--${userObj.id}" class="friend-card">
+        <div id="find-user-event--${userObj.id}" class="friend-inline-el">${userObj.fullName}</div>
+        <div id="find-user-event--${userObj.id}" class="friend-inline-el">${userObj.email}</div>
     </div>
     `
 }
