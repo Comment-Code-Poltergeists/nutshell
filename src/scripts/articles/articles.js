@@ -4,12 +4,15 @@ import { articlesEventListener, addMainEventListener } from "./eventListeners";
 import {userId} from "../main.js"
 import API from "../data/data.js"
 import { populateArticlesToMain } from "./ArticlesToMain";
+import {sortElementsByDate} from "../utilities/datetime.js"
 
 export const populateArticleModule = () => {
 const containerRef = document.getElementById("articles-content")
 containerRef.innerHTML = ""
 let data = JSON.parse(sessionStorage.getItem("articles"))
-data.forEach(element => {
+ //sort articles by date
+ const sortedArticleArray = sortElementsByDate(data, "timestamp").reverse()
+sortedArticleArray.forEach(element => {
     const newArt = makeArticleCard(element);
     containerRef.innerHTML += newArt
     const cardRef = document.getElementById(`articlecard-${element.id}`)

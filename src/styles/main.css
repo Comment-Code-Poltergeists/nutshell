@@ -7,15 +7,17 @@
 .side-components {
 
   background-color: lightcoral;
-  height: 33%;
+  height: 253px;
   margin: 1%;
   text-align: center;
+  overflow: auto;
   
 }
 
 .main{
   background-color: dimgray;
   text-align: center;
+  max-height: 759px;
 }
 
 .row {
@@ -63,6 +65,10 @@
   top: -4.5px;
   left: 2px;
   float: right;
+}
+
+body {
+  font-family: fantasy, Arial, Helvetica, sans-serif;
 }
 
 #searchInputTitle {
