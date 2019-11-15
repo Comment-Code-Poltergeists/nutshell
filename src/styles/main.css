@@ -38,12 +38,18 @@
   max-width: 1000px !important;
 }
 
+/* styling for the friends section */
 .friend-card {
   border: solid black 1px;
   padding: 2px;
   background-color: #6c757d;
   margin-bottom: 2px;
   border-radius: .25rem;
+}
+
+.newFriend:hover {
+  background-color: lightskyblue;
+  cursor: pointer;
 }
 
 .friend-inline-el {
@@ -57,4 +63,9 @@
   top: -4.5px;
   left: 2px;
   float: right;
+}
+
+#searchInputTitle {
+  color: #007bff;
+  margin-right: 5px;
 }
