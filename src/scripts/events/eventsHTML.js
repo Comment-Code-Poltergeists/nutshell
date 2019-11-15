@@ -1,8 +1,4 @@
-sessionStorage.setItem("eventsCounterReset", false)
-
-const eventsCounterResetStatus = window.sessionStorage.getItem("eventsCounterReset")
-
-console.log(eventsCounterResetStatus)
+import { sortElementsByDate } from "../utilities/datetime.js"
 
 let SideEventCounter = 0
 let mainEventCounter = 0
@@ -14,27 +10,30 @@ export default {
 //*************************************************************************
   eventsSideContainerHtmlMaker(event) {
     
-    if (eventsCounterResetStatus){   // checking if there is a rdequest to reset the counter
-      sessionStorage.setItem("eventsCounterReset", false)
-      SideEventCounter = 0
-    }
+    let eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
+    let sortedEventsArray = sortElementsByDate(eventsArray, "eventDate")
 
-    if (SideEventCounter === 0) { // the next upcoming event based on the sorted array
-      SideEventCounter++
+    if (sortedEventsArray[0].id===event.id){
+
+      console.log("FIRST EVENT")
+
       return `
-     <div class="card bg-secondary border-dark">
-     <div class="card-body">
-     <h6 class="card-title"><b> ${event.eventName} </b></h6>
-     <div class="card-text">
-      <b> ${event.eventDate}</b>
-      <b> ${event.location} </b>
-     </div>
-     </div>
-     </div>
-     <br>
-     `
-    } else { // not bolded entries for all the other events
-      SideEventCounter++
+      <div class="card bg-secondary border-dark">
+      <div class="card-body">
+      <h6 class="card-title"><b> ${event.eventName} </b></h6>
+      <div class="card-text">
+       <b> ${event.eventDate}</b>
+       <b> ${event.location} </b>
+      </div>
+      </div>
+      </div>
+      <br>
+      `
+
+    }else{
+
+      console.log("NOT FIRST EVENT")
+
       return `
       <div class="card bg-secondary border-dark"> 
       <div class="card-body">
@@ -48,13 +47,18 @@ export default {
      <br>
      `
     }
+
   },
 //*************************************************************************
 // Create a HTML content for the MAIN container - DISPLAY
 //*************************************************************************
   eventsMainContainerHtmlMaker(event) {
-    if (mainEventCounter === 0) { // the next upcoming event based on the sorted array
-      mainEventCounter++
+
+
+    let eventsArray = JSON.parse(window.sessionStorage.getItem("events"))
+    let sortedEventsArray = sortElementsByDate(eventsArray, "eventDate")
+
+    if (sortedEventsArray[0].id===event.id){
       return `
      <div class="card bg-secondary border-dark" id="event-container--${event.id}">
      <div class="card-body">
@@ -68,7 +72,7 @@ export default {
      </div>
      </div>`
     } else { // not bolded entries for all the other events
-      mainEventCounter++
+     
       return `
       <div class="card bg-secondary border-dark" id="event-container--${event.id}"> 
       <div class="card-body">
