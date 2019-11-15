@@ -11,7 +11,7 @@ import { renderTaskCard } from "./tasks/renderDOM.js"
 import { clickTaskCardListener } from "./tasks/eventListeners.js"
 import { displayFriends } from "./friends/friends.js"
 import { addArticleEventListeners } from "./articles/eventListeners.js"
-import {addLoginButtonListener, addRegisterButtonListener} from "./auth/eventListeners.js"
+import {addLoginButtonListener, addRegisterButtonListener, addLogoutListener} from "./auth/eventListeners.js"
 import { renderRegisterModal } from "./auth/renderDOM.js"
 // sessionStorage.setItem("userId", "2")
 
@@ -31,6 +31,7 @@ export const userId = JSON.parse(sessionStorage.getItem("userId"))
 renderRegisterModal()
 addLoginButtonListener();
 addRegisterButtonListener();
+addLogoutListener();
 if (sessionStorage.getItem("userId") !== null) {
     
   getDataAndShowEverything()
