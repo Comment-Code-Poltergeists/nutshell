@@ -7,7 +7,7 @@
 .side-components {
 
   background-color: lightcoral;
-  height: 253px;
+  height: 230px;
   margin: 1%;
   text-align: center;
   overflow: auto;
@@ -17,7 +17,7 @@
 .main{
   background-color: dimgray;
   text-align: center;
-  max-height: 759px;
+  max-height: 700px;
 }
 
 .row {
@@ -69,9 +69,18 @@
 
 body {
   font-family: fantasy, Arial, Helvetica, sans-serif;
+  background-image: url("https://image.freepik.com/free-photo/composed-nuts-white-background_23-2147689608.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #searchInputTitle {
   color: #007bff;
   margin-right: 5px;
+}
+
+#nav-logo{
+  height: 80px;
+  width: 80px;
 }

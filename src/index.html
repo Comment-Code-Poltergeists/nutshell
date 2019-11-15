@@ -16,19 +16,20 @@
 <body>
 
   <div class="container">
-    <ul class="nav mr-sm-2">
+    <ul class="nav mr-sm-2 justify-content-center" id="nut-navbar">
       <li class="nav-item">
-        <a class="nav-link active" href="#" id="logo">Logo</a>
+        <a class="nav-link active" href="#" ><img src="../src/assets/logo.png" id="nav-logo"></a>
       </li>
       <form class="form-inline mx-auto">
         <span id="searchInputTitle">Find Users</span>
         <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button id="searchButton" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
-      <li class="nav-item ">
+      <li class="nav-item .form-inline">
         <a class="nav-link" href="#">Logout</a>
       </li>
     </ul>
+    <br>
     <div class="row" id="components-container">
       <div class="col-lg-3">
         <div id="events-container" class="card side-components overflow-auto">
