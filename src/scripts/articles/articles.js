@@ -4,6 +4,7 @@ import { articlesEventListener, addMainEventListener } from "./eventListeners";
 import { userId } from "../main.js"
 import API from "../data/data.js"
 import { populateArticlesToMain } from "./ArticlesToMain";
+import {sortElementsByDate} from "../utilities/datetime.js"
 
 export const populateArticleModule = () => {
     const containerRef = document.getElementById("articles-content")
