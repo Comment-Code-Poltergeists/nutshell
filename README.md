@@ -26,6 +26,8 @@ Nutshell is a dashboard for people to use to organize their daily tasks, events,
  - Have fun!
 
 ## ERD
+
+![Screencast](nutshell.gif)
 ![nutshell ERD](./NutshellERD.png)
 
 &copy; 2019 - Chase Fite, Ken Boyd, Guy Cherkesky, Sullivan Pierce, & Ryan Bishop
