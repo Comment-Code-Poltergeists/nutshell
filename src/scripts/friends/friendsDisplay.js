@@ -4,7 +4,7 @@ Author: Chase Fite
  */
 
 import { buildSideFriendHTML, buildMainFriendHTML } from "./friendsHTML.js"
-import { removeFriendFunctionality } from "./eventListeners.js"
+import { removeFriendFunctionality } from "./friendsEventListeners.js/index.js"
 import { buildFindUsersHTML } from "./friendsHTML.js"
 
 // displays friend cards in side container

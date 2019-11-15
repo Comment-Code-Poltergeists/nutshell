@@ -87,7 +87,6 @@ export const addFriendFromSearch = (loggedInUserId) => {
 					// GET updated friends list
 					dataJS.buildYourOwnGet(`friends?loggedInUser=${loggedInUserId}&_expand=user`)
 					.then(updatedFriendsArray => {
-                        console.log(updatedFriendsArray)
 						// update session storage
 						sessionStorage.setItem("friends", JSON.stringify(updatedFriendsArray))
 						// render dom with new data
