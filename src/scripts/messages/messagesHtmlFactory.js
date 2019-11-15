@@ -19,10 +19,10 @@ export default {
         const userId = JSON.parse(sessionStorage.getItem("userId"))
 
         return `
-            <span class="message-timestamp">${formattedtime}</span>
-            <span><strong>${message.user.fullName}</strong></span>
+            <strong><span>${message.user.fullName}</span></strong>
             <div id="message--${message.id}" class="card bg-secondary border-dark">${message.message}
             </div>
+            <p class="message-timestamp">${formattedtime}</p>
             `
     },
     createMainPreviousMessageHtml(message){
@@ -49,6 +49,7 @@ export default {
         }
         else if (!friendsIdArray.includes(message.user.id)){
             friendStatus = "not-friend"
+            buttonGroup = ""
         }
         else {
             buttonGroup = ""
@@ -56,10 +57,10 @@ export default {
         }
         return `
             <strong><span id="add-friend--${message.user.id}"class=${friendStatus}>${message.user.fullName}</span></strong>
-            <span class="message-timestamp">${formattedtime}</span>
             <div class="card bg-secondary border-dark">
             <div id="main-message--${message.id}">${message.message}${buttonGroup}</div>
             </div>
+            <p class="message-timestamp">${formattedtime}</p>
             `
     },
     buildNewMessageForm() {
