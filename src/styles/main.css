@@ -9,9 +9,11 @@
   background-color: lightgray;
   height: 230px;
   margin: 1%;
-  text-align: center;
+  text-align: center;  
+}
+
+.side-components > article {
   overflow: auto;
-  
 }
 
 .main{
