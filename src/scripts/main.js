@@ -18,9 +18,9 @@ export const userId = JSON.parse(sessionStorage.getItem("userId"))
 API.fetchEverything(userId).then(yourInfo => {
     displayMessages()
     displayFriends()
+    populateArticleModule();
     eventManager.displaySideEvents()
     eventManager.setAllEventListeners()
-    populateArticleModule();
     addArticleEventListeners();
     renderTaskCard()
     clickTaskCardListener()

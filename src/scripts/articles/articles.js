@@ -24,7 +24,7 @@ export const populateArticleModule = () => {
         });
     } else {
         console.log("nothing in session storage!")
-        buildYourOwnGet("friends").then((friendsList) => {
+        API.buildYourOwnGet("friends?_embed=userId").then((friendsList) => {
             let Url = `articles?userId=${userId}`;
             friendsList.forEach(element => {
                 Url += `&userId=${element.user.id}`
